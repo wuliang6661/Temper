@@ -12,20 +12,24 @@ public class FamenBo implements Serializable {
 
 
     /**
-     * deviceId : 39
-     * deviceName : 金枫基础水阀
-     * deviceTypeId : 6
-     * estate : 离线
-     * lastStatusChangeTime : 2018-02-28 00:00:00
+     * deviceId : 40
+     * deviceName : 金枫模拟水阀
+     * deviceTypeId : 15
+     * estate : 1
+     * lastStatusChangeTime : 2018-02-28 20:47:45
      * mode : 手动
+     * timeParameters : 01:00-01:00-0%
+     * timeStatus : 0
      */
 
     private int deviceId;
     private String deviceName;
     private int deviceTypeId;
-    private String estate;
+    private int estate;
     private String lastStatusChangeTime;
     private String mode;
+    private String timeParameters;
+    private String timeStatus;
 
     public int getDeviceId() {
         return deviceId;
@@ -51,11 +55,11 @@ public class FamenBo implements Serializable {
         this.deviceTypeId = deviceTypeId;
     }
 
-    public String getEstate() {
+    public int getEstate() {
         return estate;
     }
 
-    public void setEstate(String estate) {
+    public void setEstate(int estate) {
         this.estate = estate;
     }
 
@@ -73,5 +77,21 @@ public class FamenBo implements Serializable {
 
     public void setMode(String mode) {
         this.mode = mode;
+    }
+
+    public String getTimeParameters() {
+        return timeParameters;
+    }
+
+    public void setTimeParameters(String timeParameters) {
+        this.timeParameters = timeParameters;
+    }
+
+    public String getTimeStatus() {
+        return timeStatus;
+    }
+
+    public void setTimeStatus(String timeStatus) {
+        this.timeStatus = timeStatus;
     }
 }

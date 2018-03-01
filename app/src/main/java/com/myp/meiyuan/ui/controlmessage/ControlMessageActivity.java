@@ -109,6 +109,7 @@ public class ControlMessageActivity extends MVPBaseActivity<ControlMessageContra
         addDevices.setOnClickListener(this);
         invition();
         inviData();
+        recycle.setNestedScrollingEnabled(false);
     }
 
 
@@ -129,7 +130,8 @@ public class ControlMessageActivity extends MVPBaseActivity<ControlMessageContra
         valueType.setVisibility(View.GONE);
         switch (famenBo.getDeviceTypeId()) {
             case LocalConfiguration.DEVICE_TYPE_BUSWITCH:  //补光灯
-                if (famenBo.getEstate().equals("在线")) {
+                // TODO: 2018/3/1  在线离线字段需要更改
+                if (famenBo.getDeviceName().equals("在线")) {
                     deviceImg.setImageResource(R.drawable.device_buguangdeng);
                 } else {
                     deviceImg.setImageResource(R.drawable.device_buguangdeng_hui);
@@ -138,7 +140,7 @@ public class ControlMessageActivity extends MVPBaseActivity<ControlMessageContra
             case LocalConfiguration.DEVICE_TYPE_MOSWITCH:  //模拟水阀
                 famenkaidu.setVisibility(View.VISIBLE);
                 famenChecked.setVisibility(View.GONE);
-                if (famenBo.getEstate().equals("在线")) {
+                if (famenBo.getDeviceName().equals("在线")) {
                     deviceImg.setImageResource(R.drawable.device_moni);
                 } else {
                     deviceImg.setImageResource(R.drawable.device_moni_hui);
@@ -147,14 +149,14 @@ public class ControlMessageActivity extends MVPBaseActivity<ControlMessageContra
             case LocalConfiguration.DEVICE_TYPE_SWITCH:   //基础水阀
                 famenkaidu.setVisibility(View.GONE);
                 famenChecked.setVisibility(View.VISIBLE);
-                if (famenBo.getEstate().equals("在线")) {
+                if (famenBo.getDeviceName().equals("在线")) {
                     deviceImg.setImageResource(R.drawable.device_jichu);
                 } else {
                     deviceImg.setImageResource(R.drawable.device_jichu_hui);
                 }
                 break;
         }
-        if (famenBo.getEstate().equals("在线")) {
+        if (famenBo.getDeviceName().equals("在线")) {
             connectTypePoint.setImageResource(R.drawable.point);
             connectTypeText.setText("在线");
             connectTypeText.setTextColor(Color.parseColor("#49baff"));
@@ -169,6 +171,31 @@ public class ControlMessageActivity extends MVPBaseActivity<ControlMessageContra
         } else {
             swithMode(0);
         }
+        famenCheckbox.setChecked(famenBo.getEstate() == 1);
+        dingshiCheckbox.setChecked("1".equals(famenBo.getTimeStatus()));
+        setDingshiAdapter();
+    }
+
+    /**
+     * 设置定时数据
+     */
+    private void setDingshiAdapter() {
+        String[] times = famenBo.getTimeParameters().split("\\|");
+        for (String str : times) {
+            String[] items = str.split("-");
+            FamenTimeBo timeBo = new FamenTimeBo();
+            if (items.length >= 3) {
+                timeBo.setKaidu(items[2]);
+            }
+            if (items.length >= 2) {
+                timeBo.setEndTime(items[1]);
+            }
+            if (items.length >= 1) {
+                timeBo.setStartTime(items[0]);
+            }
+            famenTimeBos.add(timeBo);
+        }
+        setTimeAdapter();
     }
 
 
@@ -310,6 +337,7 @@ public class ControlMessageActivity extends MVPBaseActivity<ControlMessageContra
             dingshiCheckbox.setEnabled(true);
             addTimeImg.setEnabled(true);
         }
+        setTimeAdapter();
     }
 
     /**

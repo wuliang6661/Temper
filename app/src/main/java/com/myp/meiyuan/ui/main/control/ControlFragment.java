@@ -89,7 +89,8 @@ public class ControlFragment extends MVPBaseFragment<ControlContract.View, Contr
                 ImageView point = (ImageView) holder.getView(R.id.connect_type_point);
                 TextView type_text = (TextView) holder.getView(R.id.type_text);
                 holder.setText(R.id.device_id, "ID:" + s.getDeviceId());
-                if (s.getEstate().equals("在线")) {
+                // TODO: 2018/3/1    这里的在线离线字段需要修改
+                if (s.getDeviceName().equals("在线")) {
                     type.setText("在线");
                     type.setTextColor(Color.parseColor("#49baff"));
                     type_text.setTextColor(Color.parseColor("#88ceff"));
@@ -104,21 +105,21 @@ public class ControlFragment extends MVPBaseFragment<ControlContract.View, Contr
                 holder.setText(R.id.type_text, s.getMode());
                 switch (s.getDeviceTypeId()) {
                     case LocalConfiguration.DEVICE_TYPE_SWITCH:
-                        if (s.getEstate().equals("在线")) {
+                        if (s.getDeviceName().equals("在线")) {
                             deviceImg.setImageResource(R.drawable.device_jichu);
                         } else {
                             deviceImg.setImageResource(R.drawable.device_jichu_hui);
                         }
                         break;
                     case LocalConfiguration.DEVICE_TYPE_MOSWITCH:
-                        if (s.getEstate().equals("在线")) {
+                        if (s.getDeviceName().equals("在线")) {
                             deviceImg.setImageResource(R.drawable.device_moni);
                         } else {
                             deviceImg.setImageResource(R.drawable.device_moni_hui);
                         }
                         break;
                     case LocalConfiguration.DEVICE_TYPE_BUSWITCH:
-                        if (s.getEstate().equals("在线")) {
+                        if (s.getDeviceName().equals("在线")) {
                             deviceImg.setImageResource(R.drawable.device_buguangdeng);
                         } else {
                             deviceImg.setImageResource(R.drawable.device_buguangdeng_hui);
