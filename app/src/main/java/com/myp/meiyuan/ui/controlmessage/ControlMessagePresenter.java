@@ -14,12 +14,14 @@ public class ControlMessagePresenter extends BasePresenterImpl<ControlMessageCon
 
     @Override
     public void updateControl(String deviceTypeId, String deviceId, String estate, String lastStatusChangeTime, final String mode,
-                              String timeParameters, String timeStatus) {
-        HttpServiceIml.updateControl(deviceTypeId, deviceId, estate, lastStatusChangeTime, mode, timeParameters, timeStatus).subscribe(new Subscriber<Object>() {
+                              String timeParameters, String timeStatus,String firstLetter) {
+        HttpServiceIml.updateControl(deviceTypeId, deviceId, estate, lastStatusChangeTime, mode, timeParameters, timeStatus,firstLetter).subscribe(new Subscriber<Object>() {
 
             @Override
             public void onNext(Object o) {
-
+                if(mView != null){
+                    mView.sunress();
+                }
             }
 
 

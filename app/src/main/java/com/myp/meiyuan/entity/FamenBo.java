@@ -31,6 +31,18 @@ public class FamenBo implements Serializable {
     private String timeParameters;
     private String timeStatus;
 
+    public String getFirstLetter() {
+        return firstLetter;
+    }
+
+    public void setFirstLetter(String firstLetter) {
+        this.firstLetter = firstLetter;
+    }
+
+    private String firstLetter;
+
+
+
     public int getDeviceId() {
         return deviceId;
     }
