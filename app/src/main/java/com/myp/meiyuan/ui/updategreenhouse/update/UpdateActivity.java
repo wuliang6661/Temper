@@ -1,0 +1,77 @@
+package com.myp.meiyuan.ui.updategreenhouse.update;
+
+
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import com.myp.meiyuan.R;
+import com.myp.meiyuan.entity.GroupBO;
+import com.myp.meiyuan.mvp.MVPBaseActivity;
+import com.myp.meiyuan.util.LogUtils;
+import com.myp.meiyuan.util.StringUtils;
+
+import butterknife.Bind;
+
+
+/**
+ * 修改名称
+ */
+
+public class UpdateActivity extends MVPBaseActivity<UpdateContract.View, UpdatePresenter> implements UpdateContract.View, View.OnClickListener {
+
+    @Bind(R.id.add_devices)
+    TextView addDevices;
+    @Bind(R.id.edit_dapeng)
+    EditText editDapeng;
+
+    GroupBO groupBO;
+
+    @Override
+    protected int getLayout() {
+        return R.layout.act_update;
+    }
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        goBack();
+        setTitle("修改");
+        addDevices.setText("完成");
+        addDevices.setOnClickListener(this);
+
+        groupBO = (GroupBO) getIntent().getExtras().getSerializable("groupBO");
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.add_devices:
+                String name = editDapeng.getText().toString().trim();
+                if (StringUtils.isEmpty(name)) {
+                    LogUtils.showToast("请输入名称!");
+                } else {
+                    mPresenter.updateName(groupBO.getGroupId() + "", name);
+                }
+                break;
+        }
+    }
+
+    @Override
+    public void updateSuress() {
+        finish();
+    }
+
+    @Override
+    public void onRequestError(String msg) {
+        LogUtils.showToast(msg);
+    }
+
+    @Override
+    public void onRequestEnd() {
+
+    }
+}

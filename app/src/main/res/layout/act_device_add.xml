@@ -1,0 +1,897 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_layout" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="23dp"
+                    android:text="设备名称"
+                    android:textColor="#333333"
+                    android:textSize="15dp" />
+
+
+                <ImageView
+                    android:id="@+id/image4_next"
+                    android:layout_width="9dp"
+                    android:layout_height="17dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="13dp"
+                    android:src="@drawable/next_xia" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="12dp"
+                    android:layout_toLeftOf="@+id/image4_next"
+                    android:text="未填写"
+                    android:textColor="#cccccc"
+                    android:textSize="12dp" />
+
+
+            </RelativeLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#f1f1f1" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="23dp"
+                    android:text="设备编号"
+                    android:textColor="#333333"
+                    android:textSize="15dp" />
+
+
+                <ImageView
+                    android:id="@+id/next02"
+                    android:layout_width="9dp"
+                    android:layout_height="17dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="13dp"
+                    android:src="@drawable/next_xia" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="12dp"
+                    android:layout_toLeftOf="@+id/next02"
+                    android:text="请输入设备ID"
+                    android:textColor="#cccccc"
+                    android:textSize="12dp" />
+
+
+            </RelativeLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#f1f1f1" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="23dp"
+                    android:text="网关名称"
+                    android:textColor="#333333"
+                    android:textSize="15dp" />
+
+
+                <ImageView
+                    android:id="@+id/next03"
+                    android:layout_width="9dp"
+                    android:layout_height="17dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="13dp"
+                    android:src="@drawable/next_xia" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="12dp"
+                    android:layout_toLeftOf="@+id/next03"
+                    android:text="未填写"
+                    android:textColor="#cccccc"
+                    android:textSize="12dp" />
+
+
+            </RelativeLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#f1f1f1" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="23dp"
+                    android:text="网关ID"
+                    android:textColor="#333333"
+                    android:textSize="15dp" />
+
+
+                <ImageView
+                    android:id="@+id/next04"
+                    android:layout_width="9dp"
+                    android:layout_height="17dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="13dp"
+                    android:src="@drawable/next_xia" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="12dp"
+                    android:layout_toLeftOf="@+id/next04"
+                    android:text="未填写"
+                    android:textColor="#cccccc"
+                    android:textSize="12dp" />
+
+
+            </RelativeLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#f1f1f1" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="23dp"
+                    android:text="网关编码"
+                    android:textColor="#333333"
+                    android:textSize="15dp" />
+
+
+                <ImageView
+                    android:id="@+id/next05"
+                    android:layout_width="9dp"
+                    android:layout_height="17dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="13dp"
+                    android:src="@drawable/next_xia" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="12dp"
+                    android:layout_toLeftOf="@+id/next05"
+                    android:text="未填写"
+                    android:textColor="#cccccc"
+                    android:textSize="12dp" />
+
+
+            </RelativeLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#f1f1f1" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="23dp"
+                    android:text="地址"
+                    android:textColor="#333333"
+                    android:textSize="15dp" />
+
+
+                <ImageView
+                    android:id="@+id/next06"
+                    android:layout_width="9dp"
+                    android:layout_height="17dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="13dp"
+                    android:src="@drawable/next_xia" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="12dp"
+                    android:layout_toLeftOf="@+id/next06"
+                    android:text="选填"
+                    android:textColor="#cccccc"
+                    android:textSize="12dp" />
+
+
+            </RelativeLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#f1f1f1" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="23dp"
+                    android:text="备注"
+                    android:textColor="#333333"
+                    android:textSize="15dp" />
+
+
+                <ImageView
+                    android:id="@+id/next07"
+                    android:layout_width="9dp"
+                    android:layout_height="17dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="13dp"
+                    android:src="@drawable/next_xia" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="12dp"
+                    android:layout_toLeftOf="@+id/next07"
+                    android:text="选填"
+                    android:textColor="#cccccc"
+                    android:textSize="12dp" />
+
+
+            </RelativeLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#f1f1f1" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="23dp"
+                    android:text="设备类型"
+                    android:textColor="#333333"
+                    android:textSize="15dp" />
+
+
+                <ImageView
+                    android:id="@+id/next08"
+                    android:layout_width="9dp"
+                    android:layout_height="17dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="13dp"
+                    android:src="@drawable/next_xia" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="12dp"
+                    android:layout_toLeftOf="@+id/next08"
+                    android:text="未填写"
+                    android:textColor="#cccccc"
+                    android:textSize="12dp" />
+
+
+            </RelativeLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#f1f1f1" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="23dp"
+                    android:text="预警值"
+                    android:textColor="#333333"
+                    android:textSize="15dp" />
+
+
+                <ImageView
+                    android:id="@+id/next09"
+                    android:layout_width="9dp"
+                    android:layout_height="17dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="13dp"
+                    android:src="@drawable/next_xia" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="12dp"
+                    android:layout_toLeftOf="@+id/next09"
+                    android:text="未填写"
+                    android:textColor="#cccccc"
+                    android:textSize="12dp" />
+
+
+            </RelativeLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#f1f1f1" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="23dp"
+                    android:text="告警值"
+                    android:textColor="#333333"
+                    android:textSize="15dp" />
+
+
+                <ImageView
+                    android:id="@+id/next10"
+                    android:layout_width="9dp"
+                    android:layout_height="17dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="13dp"
+                    android:src="@drawable/next_xia" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="12dp"
+                    android:layout_toLeftOf="@+id/next10"
+                    android:text="未填写"
+                    android:textColor="#cccccc"
+                    android:textSize="12dp" />
+
+
+            </RelativeLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#f1f1f1" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="23dp"
+                    android:text="越界值"
+                    android:textColor="#333333"
+                    android:textSize="15dp" />
+
+
+                <ImageView
+                    android:id="@+id/next11"
+                    android:layout_width="9dp"
+                    android:layout_height="17dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="13dp"
+                    android:src="@drawable/next_xia" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="12dp"
+                    android:layout_toLeftOf="@+id/next11"
+                    android:text="可选"
+                    android:textColor="#cccccc"
+                    android:textSize="12dp" />
+
+
+            </RelativeLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#f1f1f1" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="23dp"
+                    android:text="接入方式"
+                    android:textColor="#333333"
+                    android:textSize="15dp" />
+
+
+                <ImageView
+                    android:id="@+id/next12"
+                    android:layout_width="9dp"
+                    android:layout_height="17dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="13dp"
+                    android:src="@drawable/next_xia" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="12dp"
+                    android:layout_toLeftOf="@+id/next12"
+                    android:text="未选择"
+                    android:textColor="#cccccc"
+                    android:textSize="12dp" />
+
+
+            </RelativeLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#f1f1f1" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="23dp"
+                    android:text="品牌"
+                    android:textColor="#333333"
+                    android:textSize="15dp" />
+
+
+                <ImageView
+                    android:id="@+id/next13"
+                    android:layout_width="9dp"
+                    android:layout_height="17dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="13dp"
+                    android:src="@drawable/next_xia" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="12dp"
+                    android:layout_toLeftOf="@+id/next13"
+                    android:text="未填写"
+                    android:textColor="#cccccc"
+                    android:textSize="12dp" />
+
+
+            </RelativeLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#f1f1f1" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="23dp"
+                    android:text="型号"
+                    android:textColor="#333333"
+                    android:textSize="15dp" />
+
+
+                <ImageView
+                    android:id="@+id/next14"
+                    android:layout_width="9dp"
+                    android:layout_height="17dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="13dp"
+                    android:src="@drawable/next_xia" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="12dp"
+                    android:layout_toLeftOf="@+id/next14"
+                    android:text="未填写"
+                    android:textColor="#cccccc"
+                    android:textSize="12dp" />
+
+
+            </RelativeLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#f1f1f1" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="23dp"
+                    android:text="固件版本号"
+                    android:textColor="#333333"
+                    android:textSize="15dp" />
+
+
+                <ImageView
+                    android:id="@+id/next15"
+                    android:layout_width="9dp"
+                    android:layout_height="17dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="13dp"
+                    android:src="@drawable/next_xia" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="12dp"
+                    android:layout_toLeftOf="@+id/next15"
+                    android:text="未填写"
+                    android:textColor="#cccccc"
+                    android:textSize="12dp" />
+
+
+            </RelativeLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#f1f1f1" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:id="@+id/text1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="23dp"
+                    android:text="直播地址"
+                    android:textColor="#333333"
+                    android:textSize="15dp" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/text1"
+                    android:layout_marginLeft="7dp"
+                    android:layout_toRightOf="@+id/text1"
+                    android:text="仅仅摄像头使用"
+                    android:textColor="#e6e6e6"
+                    android:textSize="10dp" />
+
+
+                <ImageView
+                    android:id="@+id/next16"
+                    android:layout_width="9dp"
+                    android:layout_height="17dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="13dp"
+                    android:src="@drawable/next_xia" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="12dp"
+                    android:layout_toLeftOf="@+id/next16"
+                    android:text="未填写"
+                    android:textColor="#cccccc"
+                    android:textSize="12dp" />
+
+
+            </RelativeLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#f1f1f1" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="23dp"
+                    android:text="无线ID"
+                    android:textColor="#333333"
+                    android:textSize="15dp" />
+
+
+                <ImageView
+                    android:id="@+id/next17"
+                    android:layout_width="9dp"
+                    android:layout_height="17dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="13dp"
+                    android:src="@drawable/next_xia" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="12dp"
+                    android:layout_toLeftOf="@+id/next17"
+                    android:text="未填写"
+                    android:textColor="#cccccc"
+                    android:textSize="12dp" />
+
+
+            </RelativeLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#f1f1f1" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="23dp"
+                    android:text="所绑组织"
+                    android:textColor="#333333"
+                    android:textSize="15dp" />
+
+
+                <ImageView
+                    android:id="@+id/next18"
+                    android:layout_width="9dp"
+                    android:layout_height="17dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="13dp"
+                    android:src="@drawable/next_xia" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="12dp"
+                    android:layout_toLeftOf="@+id/next18"
+                    android:text="未填写"
+                    android:textColor="#cccccc"
+                    android:textSize="12dp" />
+
+
+            </RelativeLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#f1f1f1" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="23dp"
+                    android:text="所绑区域"
+                    android:textColor="#333333"
+                    android:textSize="15dp" />
+
+
+                <ImageView
+                    android:id="@+id/next19"
+                    android:layout_width="9dp"
+                    android:layout_height="17dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="13dp"
+                    android:src="@drawable/next_xia" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="12dp"
+                    android:layout_toLeftOf="@+id/next19"
+                    android:text="未填写"
+                    android:textColor="#cccccc"
+                    android:textSize="12dp" />
+
+
+            </RelativeLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#f1f1f1" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="23dp"
+                    android:text="所绑网点"
+                    android:textColor="#333333"
+                    android:textSize="15dp" />
+
+
+                <ImageView
+                    android:id="@+id/next20"
+                    android:layout_width="9dp"
+                    android:layout_height="17dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="13dp"
+                    android:src="@drawable/next_xia" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="12dp"
+                    android:layout_toLeftOf="@+id/next20"
+                    android:text="未填写"
+                    android:textColor="#cccccc"
+                    android:textSize="12dp" />
+
+
+            </RelativeLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#f1f1f1" />
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+</LinearLayout>

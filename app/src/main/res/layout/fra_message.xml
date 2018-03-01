@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RadioGroup
+        android:id="@+id/radio_layout"
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+
+        <RadioButton
+            android:id="@+id/radio_01"
+            android:layout_width="0dp"
+            android:layout_height="32dp"
+            android:layout_weight="1"
+            android:background="@drawable/radio_button_bg"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:text="1分钟"
+            android:textColor="@color/white"
+            android:textSize="12dp" />
+
+
+        <RadioButton
+            android:id="@+id/radio_02"
+            android:layout_width="0dp"
+            android:layout_height="32dp"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/radio_button_bg"
+            android:button="@null"
+            android:gravity="center"
+            android:text="5分钟"
+            android:textColor="@color/back_bg"
+            android:textSize="12dp" />
+
+
+        <RadioButton
+            android:id="@+id/radio_03"
+            android:layout_width="0dp"
+            android:layout_height="32dp"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/radio_button_bg"
+            android:button="@null"
+            android:gravity="center"
+            android:text="15分钟"
+            android:textColor="@color/back_bg"
+            android:textSize="12dp" />
+
+        <RadioButton
+            android:id="@+id/radio_04"
+            android:layout_width="0dp"
+            android:layout_height="32dp"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/radio_button_bg"
+            android:button="@null"
+            android:gravity="center"
+            android:text="30分钟"
+            android:textColor="@color/back_bg"
+            android:textSize="12dp" />
+
+        <RadioButton
+            android:id="@+id/radio_05"
+            android:layout_width="0dp"
+            android:layout_height="32dp"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/radio_button_bg"
+            android:button="@null"
+            android:gravity="center"
+            android:text="60分钟"
+            android:textColor="@color/back_bg"
+            android:textSize="12dp" />
+
+
+    </RadioGroup>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/background"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:text="序号"
+            android:textColor="#b5b5b5"
+            android:textSize="12dp" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="监测时间"
+            android:textColor="#b5b5b5"
+            android:textSize="12dp" />
+
+
+        <TextView
+            android:id="@+id/value_danwei"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:text="数据(ppm)"
+            android:textColor="#b5b5b5"
+            android:textSize="12dp" />
+
+    </RelativeLayout>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white" />
+
+</LinearLayout>

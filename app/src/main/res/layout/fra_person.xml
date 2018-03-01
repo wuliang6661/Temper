@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:background="#49baff" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="198dp"
+            android:background="@color/back_bg"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <ImageView
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:src="@drawable/person_img" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="姓名"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+
+
+        </LinearLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@color/white">
+
+
+            <ImageView
+                android:id="@+id/image1"
+                android:layout_width="21dp"
+                android:layout_height="21dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:src="@drawable/person_caozuo" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="18dp"
+                android:layout_toRightOf="@+id/image1"
+                android:text="操作记录"
+                android:textColor="#666666"
+                android:textSize="15dp" />
+
+
+            <ImageView
+                android:id="@+id/image1_next"
+                android:layout_width="9dp"
+                android:layout_height="17dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="13dp"
+                android:src="@drawable/next_xia" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="8dp"
+                android:layout_toLeftOf="@+id/image1_next"
+                android:text="NEW!"
+                android:textColor="#ff666c"
+                android:textSize="10dp"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#f1f1f1" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@color/white">
+
+
+            <ImageView
+                android:id="@+id/image2"
+                android:layout_width="21dp"
+                android:layout_height="21dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:src="@drawable/person_gaojing" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="18dp"
+                android:layout_toRightOf="@+id/image2"
+                android:text="告警记录"
+                android:textColor="#666666"
+                android:textSize="15dp" />
+
+
+            <ImageView
+                android:id="@+id/image2_next"
+                android:layout_width="9dp"
+                android:layout_height="17dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="13dp"
+                android:src="@drawable/next_xia" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="8dp"
+                android:layout_toLeftOf="@+id/image2_next"
+                android:text="NEW!"
+                android:textColor="#ff666c"
+                android:textSize="10dp"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#f1f1f1" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@color/white">
+
+
+            <ImageView
+                android:id="@+id/image3"
+                android:layout_width="21dp"
+                android:layout_height="21dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:src="@drawable/person_jinggao" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="18dp"
+                android:layout_toRightOf="@+id/image3"
+                android:text="红外入侵"
+                android:textColor="#666666"
+                android:textSize="15dp" />
+
+
+            <ImageView
+                android:id="@+id/image3_next"
+                android:layout_width="9dp"
+                android:layout_height="17dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="13dp"
+                android:src="@drawable/next_xia" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="8dp"
+                android:layout_toLeftOf="@+id/image3_next"
+                android:text="NEW!"
+                android:textColor="#ff666c"
+                android:textSize="10dp"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#f1f1f1" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@color/white">
+
+
+            <ImageView
+                android:id="@+id/image4"
+                android:layout_width="21dp"
+                android:layout_height="21dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:src="@drawable/person_devicename" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="18dp"
+                android:layout_toRightOf="@+id/image4"
+                android:text="修改设备名称"
+                android:textColor="#666666"
+                android:textSize="15dp" />
+
+
+            <ImageView
+                android:id="@+id/image4_next"
+                android:layout_width="9dp"
+                android:layout_height="17dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="13dp"
+                android:src="@drawable/next_xia" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="8dp"
+                android:layout_toLeftOf="@+id/image4_next"
+                android:text="NEW!"
+                android:textColor="#ff666c"
+                android:textSize="10dp"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#f1f1f1" />
+
+
+        <RelativeLayout
+            android:id="@+id/update_greenhouse_name"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@color/white">
+
+
+            <ImageView
+                android:id="@+id/image5"
+                android:layout_width="21dp"
+                android:layout_height="21dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:src="@drawable/person_dapeng" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="18dp"
+                android:layout_toRightOf="@+id/image5"
+                android:text="修改大棚名称"
+                android:textColor="#666666"
+                android:textSize="15dp" />
+
+
+            <ImageView
+                android:id="@+id/image5_next"
+                android:layout_width="9dp"
+                android:layout_height="17dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="13dp"
+                android:src="@drawable/next_xia"
+                android:visibility="gone" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="8dp"
+                android:layout_toLeftOf="@+id/image5_next"
+                android:text="NEW!"
+                android:textColor="#ff666c"
+                android:textSize="10dp"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="13dp"
+            android:background="#f1f1f1" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@color/white">
+
+
+            <ImageView
+                android:id="@+id/image6"
+                android:layout_width="21dp"
+                android:layout_height="21dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:src="@drawable/person_setting" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="18dp"
+                android:layout_toRightOf="@+id/image6"
+                android:text="设置"
+                android:textColor="#666666"
+                android:textSize="15dp" />
+
+
+            <ImageView
+                android:id="@+id/image6_next"
+                android:layout_width="9dp"
+                android:layout_height="17dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="13dp"
+                android:src="@drawable/next_xia"
+                android:visibility="gone" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="8dp"
+                android:layout_toLeftOf="@+id/image6_next"
+                android:text="NEW!"
+                android:textColor="#ff666c"
+                android:textSize="10dp"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#f1f1f1" />
+
+    </LinearLayout>
+
+</ScrollView>

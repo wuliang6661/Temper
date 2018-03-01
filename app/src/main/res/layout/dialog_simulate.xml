@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="起始时间"
+                android:textColor="#333333"
+                android:textSize="15dp" />
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="结束时间"
+                android:textColor="#333333"
+                android:textSize="15dp" />
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="开度"
+                android:textColor="#333333"
+                android:textSize="15dp" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="190dp"
+            android:orientation="horizontal">
+
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
+                    android:layout_centerVertical="true"
+                    android:background="#eef9ff" />
+
+                <ImageView
+                    android:id="@+id/image"
+                    android:layout_width="7dp"
+                    android:layout_height="8dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/sanjiao_right" />
+
+
+                <com.myp.meiyuan.widget.EasyPickView
+                    android:id="@+id/start_time_hour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="11dp"
+                    android:layout_toRightOf="@+id/image"
+                    app:dividerColor="#eef9ff"
+                    app:recycleMode="false" />
+
+
+                <com.myp.meiyuan.widget.EasyPickView
+                    android:id="@+id/start_time_minute"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="30dp"
+                    android:layout_toRightOf="@+id/start_time_hour"
+                    app:dividerColor="#eef9ff"
+                    app:recycleMode="false" />
+
+
+            </RelativeLayout>
+
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#f1f1f1" />
+
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
+                    android:layout_centerVertical="true"
+                    android:background="#eef9ff" />
+
+                <ImageView
+                    android:id="@+id/image1"
+                    android:layout_width="7dp"
+                    android:layout_height="8dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/sanjiao_right" />
+
+
+                <com.myp.meiyuan.widget.EasyPickView
+                    android:id="@+id/end_time_hour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="11dp"
+                    android:layout_toRightOf="@+id/image1"
+                    app:dividerColor="#eef9ff"
+                    app:recycleMode="false" />
+
+
+                <com.myp.meiyuan.widget.EasyPickView
+                    android:id="@+id/end_time_minute"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="30dp"
+                    android:layout_toRightOf="@+id/end_time_hour"
+                    app:dividerColor="#eef9ff"
+                    app:recycleMode="false" />
+
+
+            </RelativeLayout>
+
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#f1f1f1" />
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
+                    android:layout_centerVertical="true"
+                    android:background="#eef9ff" />
+
+                <ImageView
+                    android:id="@+id/image3"
+                    android:layout_width="7dp"
+                    android:layout_height="8dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/sanjiao_right" />
+
+
+                <com.myp.meiyuan.widget.EasyPickView
+                    android:id="@+id/kaidu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="11dp"
+                    app:dividerColor="#eef9ff"
+                    app:recycleMode="false" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/commit"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginBottom="14dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="25dp"
+            android:background="#10adff"
+            android:text="确定"
+            android:textColor="@color/white"
+            android:textSize="15dp" />
+
+    </LinearLayout>
+</LinearLayout>

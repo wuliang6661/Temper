@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">金枫谷</string>
+
+    <string name="rv_loading">正在加载...</string>
+    <string name="rv_loading_complete">已加载全部内容</string>
+    <string name="jianceshebei">检测设备</string>
+</resources>
