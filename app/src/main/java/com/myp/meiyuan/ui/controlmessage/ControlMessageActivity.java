@@ -104,6 +104,7 @@ public class ControlMessageActivity extends MVPBaseActivity<ControlMessageContra
         super.onCreate(savedInstanceState);
         goBack();
 
+
         famenTimeBos = new ArrayList<>();
         addDevices.setText("完成");
         modeSelecte.setOnClickListener(this);
