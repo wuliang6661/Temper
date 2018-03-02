@@ -14,6 +14,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 
 import com.myp.meiyuan.R;
+import com.myp.meiyuan.util.LogUtils;
 import com.myp.meiyuan.widget.EasyPickView;
 
 import java.util.ArrayList;
@@ -75,6 +76,18 @@ public class SimulateDialogFragment extends DialogFragment {
         commit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (Integer.parseInt(startTimeHour.getValue()) > Integer.parseInt(endTimeHour.getValue())) {
+                    LogUtils.showToast("开始时间必须小于结束时间！");
+                    return;
+                }
+                if (Integer.parseInt(startTimeHour.getValue()) == Integer.parseInt(endTimeHour.getValue())) {
+                    if (Integer.parseInt(startTimeMintue.getValue()) >= Integer.parseInt(endTimeMintue.getValue()))
+                    {
+                        LogUtils.showToast("开始时间必须小于结束时间！");
+                        return;
+                    }
+                }
+
                 if (listener != null) {
                     listener.commit(startTimeHour.getValue() + ":" + startTimeMintue.getValue(), endTimeHour.getValue() + ":" + endTimeMintue.getValue(), kaidu.getValue());
                 }

@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.mylhyl.circledialog.CircleDialog;
 import com.myp.meiyuan.R;
 import com.myp.meiyuan.config.LocalConfiguration;
 import com.myp.meiyuan.entity.FamenBo;
@@ -90,6 +91,7 @@ public class ControlMessageActivity extends MVPBaseActivity<ControlMessageContra
 
     FamenBo famenBo;
     List<FamenTimeBo> famenTimeBos;
+    LGRecycleViewAdapter<FamenTimeBo> adapter;
 
 
     @Override
@@ -208,6 +210,7 @@ public class ControlMessageActivity extends MVPBaseActivity<ControlMessageContra
             hour.add(i + "%");
         }
         easyPickview.setDataList(hour);
+        easyPickview.moveTo(Integer.parseInt(famenBo.getFirstLetter()) - 1);
     }
 
 
@@ -240,7 +243,7 @@ public class ControlMessageActivity extends MVPBaseActivity<ControlMessageContra
                             FamenTimeBo famenTimeBo = new FamenTimeBo();
                             famenTimeBo.setStartTime(startTime);
                             famenTimeBo.setEndTime(endTime);
-                            famenTimeBo.setKaidu(kaidu);
+                            famenTimeBo.setKaidu(kaidu.replaceAll("%",""));
                             famenTimeBos.add(famenTimeBo);
                             setTimeAdapter();
                         }
@@ -279,11 +282,13 @@ public class ControlMessageActivity extends MVPBaseActivity<ControlMessageContra
                     case LocalConfiguration.DEVICE_TYPE_MOSWITCH:
                         LogUtils.E(getTimePartarms());
                         mPresenter.updateControl(famenBo.getDeviceTypeId() + "", famenBo.getDeviceId() + "", null,
-                                TimeUtils.millis2String(System.currentTimeMillis()), modeText.getText().toString(), getTimePartarms(), timeStatus);
+                                TimeUtils.millis2String(System.currentTimeMillis()), modeText.getText().toString(), getTimePartarms(), timeStatus,
+                                easyPickview.getValue().replaceAll("%", ""));
                         break;
                     case LocalConfiguration.DEVICE_TYPE_SWITCH:
                         mPresenter.updateControl(famenBo.getDeviceTypeId() + "", famenBo.getDeviceId() + "", estate,
-                                TimeUtils.millis2String(System.currentTimeMillis()), modeText.getText().toString(), getTimePartarms(), timeStatus);
+                                TimeUtils.millis2String(System.currentTimeMillis()), modeText.getText().toString(),
+                                getTimePartarms(), timeStatus, easyPickview.getValue().replace("%", ""));
                         break;
                 }
                 break;
@@ -344,7 +349,7 @@ public class ControlMessageActivity extends MVPBaseActivity<ControlMessageContra
      * 增加定时器
      */
     private void setTimeAdapter() {
-        LGRecycleViewAdapter<FamenTimeBo> adapter = new LGRecycleViewAdapter<FamenTimeBo>(famenTimeBos) {
+        adapter = new LGRecycleViewAdapter<FamenTimeBo>(famenTimeBos) {
             @Override
             public int getLayoutId(int viewType) {
                 return R.layout.item_dingshi_time;
@@ -372,10 +377,32 @@ public class ControlMessageActivity extends MVPBaseActivity<ControlMessageContra
                     item_kaidu.setVisibility(View.GONE);
                 } else {
                     item_kaidu.setVisibility(View.VISIBLE);
-                    item_kaidu.setText("开度" + famenTimeBo.getKaidu());
+                    item_kaidu.setText("开度" + famenTimeBo.getKaidu() + "%");
                 }
                 checkBox.setChecked(famenTimeBo.isChecked());
-                time_id.setText("定时" + (++position));
+                time_id.setText("定时" + (position + 1));
+                RelativeLayout layout = (RelativeLayout) holder.getView(R.id.item_layout);
+                layout.setTag(position);
+                layout.setOnLongClickListener(new View.OnLongClickListener() {
+                    @Override
+                    public boolean onLongClick(final View mview) {
+                        new CircleDialog.Builder(ControlMessageActivity.this)
+                                .setTitle("提示")
+                                .setText("是否删除此条？")
+                                .setTextColor(Color.parseColor("#333333"))
+                                .setPositive("确定", new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        int position = (int) mview.getTag();
+                                        famenTimeBos.remove(position);
+                                        adapter.setDataList(famenTimeBos);
+                                    }
+                                })
+                                .setNegative("取消", null)
+                                .show();
+                        return true;
+                    }
+                });
             }
         };
         recycle.setAdapter(adapter);

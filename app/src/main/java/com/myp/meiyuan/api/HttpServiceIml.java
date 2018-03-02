@@ -117,7 +117,7 @@ public class HttpServiceIml {
      * 修改控制详情
      */
     public static Observable<Object> updateControl(String deviceTypeId, String deviceId, String estate, String lastStatusChangeTime, String mode,
-                                                   String timeParameters, String timeStatus) {
+                                                   String timeParameters, String timeStatus, String firstLetter) {
         JSONObject object = new JSONObject();
         try {
             object.put("deviceTypeId", deviceTypeId);
@@ -129,10 +129,13 @@ public class HttpServiceIml {
             object.put("mode", mode);
             object.put("timeParameters", timeParameters);
             object.put("timeStatus", timeStatus);
+            object.put("firstLetter", firstLetter);
             return getService().updateControl(object.toString()).compose(RxResultHelper.httpResult01());
-        } catch (JSONException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
     }
+
+
 }

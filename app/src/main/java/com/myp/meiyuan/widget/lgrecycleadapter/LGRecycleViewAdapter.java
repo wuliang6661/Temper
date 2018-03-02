@@ -23,6 +23,8 @@ public abstract class LGRecycleViewAdapter<T> extends RecyclerView.Adapter<LGVie
         void onItemClicked(View view, int position);
     }
 
+
+
     public LGRecycleViewAdapter(List<T> dataList) {
         this.dataList = dataList;
         onClickListeners = new SparseArray<>();

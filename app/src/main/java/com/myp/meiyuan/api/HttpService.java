@@ -9,7 +9,9 @@ import java.util.List;
 
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 import rx.Observable;
 
 /**
@@ -50,16 +52,13 @@ public interface HttpService {
     /**
      * 修改名称
      */
-    @FormUrlEncoded
-    @POST("/xiaokedou1/equipment/updateGroupName")
-    Observable<Object> updateName(@Field("params") String params);
+    @GET("/xiaokedou1/equipment/updateGroupName")
+    Observable<Object> updateName(@Query("params") String params);
 
     /**
      * 修改控制详情
      */
-    @FormUrlEncoded
-    @POST("/xiaokedou1/equipment/updateSwitchDevice")
-    Observable<Object> updateControl(@Field("params") String params);
-
+    @GET("/xiaokedou1/equipment/updateSwitchDevice")
+    Observable<Object> updateControl(@Query("params") String params);
 
 }
