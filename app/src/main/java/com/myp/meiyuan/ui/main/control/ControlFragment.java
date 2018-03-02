@@ -96,6 +96,7 @@ public class ControlFragment extends MVPBaseFragment<ControlContract.View, Contr
                     type_text.setTextColor(Color.parseColor("#88ceff"));
                     point.setImageResource(R.drawable.point);
                 } else {
+
                     type.setText("离线");
                     type.setTextColor(Color.parseColor("#999999"));
                     type_text.setTextColor(Color.parseColor("#999999"));
