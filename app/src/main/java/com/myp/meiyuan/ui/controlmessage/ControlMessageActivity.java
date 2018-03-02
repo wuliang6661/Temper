@@ -134,7 +134,7 @@ public class ControlMessageActivity extends MVPBaseActivity<ControlMessageContra
         switch (famenBo.getDeviceTypeId()) {
             case LocalConfiguration.DEVICE_TYPE_BUSWITCH:  //补光灯
                 // TODO: 2018/3/1  在线离线字段需要更改
-                if (famenBo.getDeviceName().equals("在线")) {
+                if (famenBo.getEstate() == 1) {    //在线
                     deviceImg.setImageResource(R.drawable.device_buguangdeng);
                 } else {
                     deviceImg.setImageResource(R.drawable.device_buguangdeng_hui);
@@ -143,7 +143,7 @@ public class ControlMessageActivity extends MVPBaseActivity<ControlMessageContra
             case LocalConfiguration.DEVICE_TYPE_MOSWITCH:  //模拟水阀
                 famenkaidu.setVisibility(View.VISIBLE);
                 famenChecked.setVisibility(View.GONE);
-                if (famenBo.getDeviceName().equals("在线")) {
+                if (famenBo.getEstate() == 1) {
                     deviceImg.setImageResource(R.drawable.device_moni);
                 } else {
                     deviceImg.setImageResource(R.drawable.device_moni_hui);
@@ -152,14 +152,14 @@ public class ControlMessageActivity extends MVPBaseActivity<ControlMessageContra
             case LocalConfiguration.DEVICE_TYPE_SWITCH:   //基础水阀
                 famenkaidu.setVisibility(View.GONE);
                 famenChecked.setVisibility(View.VISIBLE);
-                if (famenBo.getDeviceName().equals("在线")) {
+                if (famenBo.getEstate() == 1) {
                     deviceImg.setImageResource(R.drawable.device_jichu);
                 } else {
                     deviceImg.setImageResource(R.drawable.device_jichu_hui);
                 }
                 break;
         }
-        if (famenBo.getDeviceName().equals("在线")) {
+        if (famenBo.getEstate() == 1) {
             connectTypePoint.setImageResource(R.drawable.point);
             connectTypeText.setText("在线");
             connectTypeText.setTextColor(Color.parseColor("#49baff"));
@@ -174,7 +174,7 @@ public class ControlMessageActivity extends MVPBaseActivity<ControlMessageContra
         } else {
             swithMode(0);
         }
-        famenCheckbox.setChecked(famenBo.getEstate() == 1);
+        famenCheckbox.setChecked(famenBo.getSwitchStatus() == 1);
         dingshiCheckbox.setChecked("1".equals(famenBo.getTimeStatus()));
         setDingshiAdapter();
     }
@@ -244,7 +244,7 @@ public class ControlMessageActivity extends MVPBaseActivity<ControlMessageContra
                             FamenTimeBo famenTimeBo = new FamenTimeBo();
                             famenTimeBo.setStartTime(startTime);
                             famenTimeBo.setEndTime(endTime);
-                            famenTimeBo.setKaidu(kaidu.replaceAll("%",""));
+                            famenTimeBo.setKaidu(kaidu.replaceAll("%", ""));
                             famenTimeBos.add(famenTimeBo);
                             setTimeAdapter();
                         }

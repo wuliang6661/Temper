@@ -30,6 +30,16 @@ public class FamenBo implements Serializable {
     private String mode;
     private String timeParameters;
     private String timeStatus;
+    private int switchStatus;
+
+
+    public int getSwitchStatus() {
+        return switchStatus;
+    }
+
+    public void setSwitchStatus(int switchStatus) {
+        this.switchStatus = switchStatus;
+    }
 
     public String getFirstLetter() {
         return firstLetter;
