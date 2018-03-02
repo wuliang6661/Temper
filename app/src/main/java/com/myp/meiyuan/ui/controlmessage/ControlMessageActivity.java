@@ -133,7 +133,6 @@ public class ControlMessageActivity extends MVPBaseActivity<ControlMessageContra
         valueType.setVisibility(View.GONE);
         switch (famenBo.getDeviceTypeId()) {
             case LocalConfiguration.DEVICE_TYPE_BUSWITCH:  //补光灯
-                // TODO: 2018/3/1  在线离线字段需要更改
                 if (famenBo.getEstate() == 1) {    //在线
                     deviceImg.setImageResource(R.drawable.device_buguangdeng);
                 } else {

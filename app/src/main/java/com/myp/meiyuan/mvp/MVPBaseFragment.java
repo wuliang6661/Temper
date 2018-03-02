@@ -3,7 +3,8 @@ package com.myp.meiyuan.mvp;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+
+import com.myp.meiyuan.base.BaseFragment;
 
 import java.lang.reflect.ParameterizedType;
 
@@ -14,7 +15,7 @@ import java.lang.reflect.ParameterizedType;
  * 为所有fragment提供的mvp模式的父类
  */
 
-public abstract class MVPBaseFragment<V extends BaseView, T extends BasePresenterImpl<V>> extends Fragment implements BaseView {
+public abstract class MVPBaseFragment<V extends BaseView, T extends BasePresenterImpl<V>> extends BaseFragment implements BaseView {
 
     public T mPresenter;
 

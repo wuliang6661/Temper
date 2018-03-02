@@ -11,6 +11,9 @@ import android.widget.RelativeLayout;
 
 import com.myp.meiyuan.R;
 import com.myp.meiyuan.mvp.MVPBaseFragment;
+import com.myp.meiyuan.ui.SettingActivity;
+import com.myp.meiyuan.ui.recoder_oper.OperationRecoderActivity;
+import com.myp.meiyuan.ui.updatedivicename.UpdateDiviceNameActivity;
 import com.myp.meiyuan.ui.updategreenhouse.UpdateGreenHouseActivity;
 
 import butterknife.Bind;
@@ -25,6 +28,16 @@ public class PersonFragment extends MVPBaseFragment<PersonContract.View, PersonP
 
     @Bind(R.id.update_greenhouse_name)
     RelativeLayout updateGreenhouseName;
+    @Bind(R.id.cazuo_recoder)
+    RelativeLayout cazuoRecoder;
+    @Bind(R.id.gaojing_recoder)
+    RelativeLayout gaojingRecoder;
+    @Bind(R.id.hongwai_recoder)
+    RelativeLayout hongwaiRecoder;
+    @Bind(R.id.update_device_name)
+    RelativeLayout updateDeviceName;
+    @Bind(R.id.setting)
+    RelativeLayout setting;
 
     @Nullable
     @Override
@@ -39,6 +52,11 @@ public class PersonFragment extends MVPBaseFragment<PersonContract.View, PersonP
         super.onViewCreated(view, savedInstanceState);
 
         updateGreenhouseName.setOnClickListener(this);
+        cazuoRecoder.setOnClickListener(this);
+        gaojingRecoder.setOnClickListener(this);
+        hongwaiRecoder.setOnClickListener(this);
+        updateDeviceName.setOnClickListener(this);
+        setting.setOnClickListener(this);
     }
 
     @Override
@@ -53,6 +71,27 @@ public class PersonFragment extends MVPBaseFragment<PersonContract.View, PersonP
             case R.id.update_greenhouse_name:
                 Intent intent = new Intent(getActivity(), UpdateGreenHouseActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.cazuo_recoder:    //操作记录
+                Bundle bundle = new Bundle();
+                bundle.putInt("type", 1);
+                gotoActivity(OperationRecoderActivity.class, bundle, false);
+                break;
+            case R.id.gaojing_recoder:   //告警记录
+                Bundle bundle1 = new Bundle();
+                bundle1.putInt("type", 2);
+                gotoActivity(OperationRecoderActivity.class, bundle1, false);
+                break;
+            case R.id.hongwai_recoder:   //红外入侵
+                Bundle bundle3 = new Bundle();
+                bundle3.putInt("type", 3);
+                gotoActivity(OperationRecoderActivity.class, bundle3, false);
+                break;
+            case R.id.update_device_name:   //修改设备名称
+                gotoActivity(UpdateDiviceNameActivity.class, false);
+                break;
+            case R.id.setting:            //设置
+                gotoActivity(SettingActivity.class, false);
                 break;
         }
     }

@@ -44,6 +44,7 @@
 
 
         <RelativeLayout
+            android:id="@+id/cazuo_recoder"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:background="@color/white">
@@ -97,6 +98,7 @@
 
 
         <RelativeLayout
+            android:id="@+id/gaojing_recoder"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:background="@color/white">
@@ -150,6 +152,7 @@
 
 
         <RelativeLayout
+            android:id="@+id/hongwai_recoder"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:background="@color/white">
@@ -203,6 +206,7 @@
 
 
         <RelativeLayout
+            android:id="@+id/update_device_name"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:background="@color/white">
@@ -310,6 +314,7 @@
 
 
         <RelativeLayout
+            android:id="@+id/setting"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:background="@color/white">
