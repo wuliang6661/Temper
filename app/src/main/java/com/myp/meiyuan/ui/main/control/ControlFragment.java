@@ -89,14 +89,12 @@ public class ControlFragment extends MVPBaseFragment<ControlContract.View, Contr
                 ImageView point = (ImageView) holder.getView(R.id.connect_type_point);
                 TextView type_text = (TextView) holder.getView(R.id.type_text);
                 holder.setText(R.id.device_id, "ID:" + s.getDeviceId());
-                // TODO: 2018/3/1    这里的在线离线字段需要修改
-                if (s.getDeviceName().equals("在线")) {
+                if (s.getEstate() == 1) {
                     type.setText("在线");
                     type.setTextColor(Color.parseColor("#49baff"));
                     type_text.setTextColor(Color.parseColor("#88ceff"));
                     point.setImageResource(R.drawable.point);
                 } else {
-
                     type.setText("离线");
                     type.setTextColor(Color.parseColor("#999999"));
                     type_text.setTextColor(Color.parseColor("#999999"));
@@ -106,21 +104,21 @@ public class ControlFragment extends MVPBaseFragment<ControlContract.View, Contr
                 holder.setText(R.id.type_text, s.getMode());
                 switch (s.getDeviceTypeId()) {
                     case LocalConfiguration.DEVICE_TYPE_SWITCH:
-                        if (s.getDeviceName().equals("在线")) {
+                        if (s.getEstate() == 1) {
                             deviceImg.setImageResource(R.drawable.device_jichu);
                         } else {
                             deviceImg.setImageResource(R.drawable.device_jichu_hui);
                         }
                         break;
                     case LocalConfiguration.DEVICE_TYPE_MOSWITCH:
-                        if (s.getDeviceName().equals("在线")) {
+                        if (s.getEstate() == 1) {
                             deviceImg.setImageResource(R.drawable.device_moni);
                         } else {
                             deviceImg.setImageResource(R.drawable.device_moni_hui);
                         }
                         break;
                     case LocalConfiguration.DEVICE_TYPE_BUSWITCH:
-                        if (s.getDeviceName().equals("在线")) {
+                        if (s.getEstate() == 1) {
                             deviceImg.setImageResource(R.drawable.device_buguangdeng);
                         } else {
                             deviceImg.setImageResource(R.drawable.device_buguangdeng_hui);

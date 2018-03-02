@@ -116,14 +116,14 @@ public class HttpServiceIml {
     /**
      * 修改控制详情
      */
-    public static Observable<Object> updateControl(String deviceTypeId, String deviceId, String estate, String lastStatusChangeTime, String mode,
+    public static Observable<Object> updateControl(String deviceTypeId, String deviceId, String switchStatus, String lastStatusChangeTime, String mode,
                                                    String timeParameters, String timeStatus, String firstLetter) {
         JSONObject object = new JSONObject();
         try {
             object.put("deviceTypeId", deviceTypeId);
             object.put("deviceId", deviceId);
-            if (!StringUtils.isEmpty(estate)) {
-                object.put("estate", estate);
+            if (!StringUtils.isEmpty(switchStatus)) {
+                object.put("switchStatus", switchStatus);
             }
             object.put("lastStatusChangeTime", lastStatusChangeTime);
             object.put("mode", mode);

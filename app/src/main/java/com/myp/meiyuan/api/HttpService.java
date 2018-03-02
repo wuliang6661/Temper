@@ -25,29 +25,25 @@ public interface HttpService {
     String URL = "http://120.27.133.127/";   //测试服
 
 
-    @FormUrlEncoded
-    @POST("xiaokedou1/equipment/getDataDevicesByGroupId")
-    Observable<List<DeviceBO>> getDeviceGroup(@Field("params") String params);
+    @GET("xiaokedou1/equipment/getDataDevicesByGroupId")
+    Observable<List<DeviceBO>> getDeviceGroup(@Query("params") String params);
 
 
-    @FormUrlEncoded
-    @POST("/xiaokedou1/device/searchOneDevice")
-    Observable<List<MonitorBo>> getSearchList(@Field("params") String params);
+    @GET("/xiaokedou1/device/searchOneDevice")
+    Observable<List<MonitorBo>> getSearchList(@Query("params") String params);
 
 
     /**
      * 获取控制数据
      */
-    @FormUrlEncoded
-    @POST("/xiaokedou1/equipment/getAllSwitchDevicesByGroupId")
-    Observable<List<FamenBo>> getFamenList(@Field("params") String params);
+    @GET("/xiaokedou1/equipment/getAllSwitchDevicesByGroupId")
+    Observable<List<FamenBo>> getFamenList(@Query("params") String params);
 
     /**
      * 获取大棚列表
      */
-    @FormUrlEncoded
-    @POST("/xiaokedou1/equipment/getAllgroups")
-    Observable<List<GroupBO>> getGroupList(@Field("params") String params);
+    @GET("/xiaokedou1/equipment/getAllgroups")
+    Observable<List<GroupBO>> getGroupList(@Query("params") String params);
 
     /**
      * 修改名称

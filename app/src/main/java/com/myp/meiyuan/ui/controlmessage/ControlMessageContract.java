@@ -17,7 +17,7 @@ public class ControlMessageContract {
 
     interface  Presenter extends BasePresenter<View> {
 
-        void updateControl(String deviceTypeId, String deviceId, String estate, String lastStatusChangeTime, String mode,
+        void updateControl(String deviceTypeId, String deviceId, String switchStatus, String lastStatusChangeTime, String mode,
                            String timeParameters, String timeStatus,String firstLetter);
     }
 }

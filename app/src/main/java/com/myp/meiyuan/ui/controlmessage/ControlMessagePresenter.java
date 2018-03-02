@@ -13,9 +13,9 @@ import rx.Subscriber;
 public class ControlMessagePresenter extends BasePresenterImpl<ControlMessageContract.View> implements ControlMessageContract.Presenter {
 
     @Override
-    public void updateControl(String deviceTypeId, String deviceId, String estate, String lastStatusChangeTime, final String mode,
+    public void updateControl(String deviceTypeId, String deviceId, String switchStatus, String lastStatusChangeTime, final String mode,
                               String timeParameters, String timeStatus,String firstLetter) {
-        HttpServiceIml.updateControl(deviceTypeId, deviceId, estate, lastStatusChangeTime, mode, timeParameters, timeStatus,firstLetter).subscribe(new Subscriber<Object>() {
+        HttpServiceIml.updateControl(deviceTypeId, deviceId, switchStatus, lastStatusChangeTime, mode, timeParameters, timeStatus,firstLetter).subscribe(new Subscriber<Object>() {
 
             @Override
             public void onNext(Object o) {
