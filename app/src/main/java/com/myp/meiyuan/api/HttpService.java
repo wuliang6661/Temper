@@ -1,18 +1,17 @@
 package com.myp.meiyuan.api;
 
+import com.myp.meiyuan.entity.DeviceAndGroupBo;
 import com.myp.meiyuan.entity.DeviceBO;
 import com.myp.meiyuan.entity.FamenBo;
 import com.myp.meiyuan.entity.GroupBO;
 import com.myp.meiyuan.entity.MonitorBo;
 import com.myp.meiyuan.entity.OperationRecoderBo;
+import com.myp.meiyuan.entity.UserBo;
 import com.myp.meiyuan.entity.WaitRecoderBo;
 
 import java.util.List;
 
-import retrofit2.http.Field;
-import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
-import retrofit2.http.POST;
 import retrofit2.http.Query;
 import rx.Observable;
 
@@ -63,13 +62,13 @@ public interface HttpService {
     /**
      * 获取用户信息
      */
-    @GET("/xiaokedou/user/getUserInfo")
-    Observable<Object> getUserMessage(@Query("params") String params);
+    @GET("/xiaokedou1/user/getUserInfo")
+    Observable<UserBo> getUserMessage(@Query("params") String params);
 
     /**
      * 修改个人信息
      */
-    @GET("/xiaokedou/user/updateUser")
+    @GET("/xiaokedou1/user/updateUser")
     Observable<String> updateUser(@Query("params") String params);
 
     /**
@@ -90,6 +89,18 @@ public interface HttpService {
      */
     @GET("/xiaokedou1/historyBrowseController/getHistroy")
     Observable<List<OperationRecoderBo>> getOperationRecoder(@Query("params") String params);
+
+    /**
+     * 获取设备名称和所属分组
+     */
+    @GET("/xiaokedou1/equipment/getAllNumericDevices")
+    Observable<List<DeviceAndGroupBo>> getAllNumDevices(@Query("params") String params);
+
+    /**
+     * 修改设备名称和所属分组
+     */
+    @GET("/xiaokedou1/equipment/updatecDeviceName")
+    Observable<String> updateDeviceName(@Query("params") String params);
 
 
 }

@@ -17,12 +17,14 @@ import android.widget.TextView;
 import com.myp.meiyuan.R;
 import com.myp.meiyuan.config.LocalConfiguration;
 import com.myp.meiyuan.entity.FamenBo;
+import com.myp.meiyuan.entity.GroupBO;
 import com.myp.meiyuan.mvp.MVPBaseFragment;
 import com.myp.meiyuan.ui.controlmessage.ControlMessageActivity;
 import com.myp.meiyuan.ui.deviceadd.DeviceAddActivity;
 import com.myp.meiyuan.widget.lgrecycleadapter.LGRecycleViewAdapter;
 import com.myp.meiyuan.widget.lgrecycleadapter.LGViewHolder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
@@ -45,6 +47,10 @@ public class ControlFragment extends MVPBaseFragment<ControlContract.View, Contr
     @Bind(R.id.recycle)
     RecyclerView recycle;
 
+    List<GroupBO> jianceGroups;
+
+    int position;
+
 
     @Nullable
     @Override
@@ -62,14 +68,36 @@ public class ControlFragment extends MVPBaseFragment<ControlContract.View, Contr
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         recycle.setLayoutManager(manager);
 
+        jianceGroups = new ArrayList<>();
         addDevices.setOnClickListener(this);
         title.setText("控制设备");
+        mPresenter.getTab();
+
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                position = tab.getPosition();
+                mPresenter.getFamenList(jianceGroups.get(tab.getPosition()).getGroupId() + "");
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        mPresenter.getFamenList("52");
+        if(!jianceGroups.isEmpty()){
+            mPresenter.getFamenList(jianceGroups.get(position).getGroupId() + "");
+        }
     }
 
     /**
@@ -160,5 +188,17 @@ public class ControlFragment extends MVPBaseFragment<ControlContract.View, Contr
     @Override
     public void showFamenList(List<FamenBo> famenBos) {
         setAdapter(famenBos);
+    }
+
+    @Override
+    public void getTab(List<GroupBO> groupBOs) {
+        jianceGroups = new ArrayList<>();
+        for (GroupBO groupBO : groupBOs) {
+            if (groupBO.getGroupType() == 1) {
+                jianceGroups.add(groupBO);
+                tabLayout.addTab(tabLayout.newTab().setText(groupBO.getGroupName()));
+            }
+        }
+        mPresenter.getFamenList(jianceGroups.get(0).getGroupId() + "");
     }
 }

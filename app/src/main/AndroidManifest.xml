@@ -65,6 +65,9 @@
         <!--用户信息-->
         <activity android:name=".ui.user_message.User_messageActivity" />
 
+        <!--修改设备名称-->
+        <activity android:name=".ui.updatedivicename.updatename.UpdateNameActivity" />
+
     </application>
 
 </manifest>

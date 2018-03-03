@@ -1,10 +1,12 @@
 package com.myp.meiyuan.api;
 
+import com.myp.meiyuan.entity.DeviceAndGroupBo;
 import com.myp.meiyuan.entity.DeviceBO;
 import com.myp.meiyuan.entity.FamenBo;
 import com.myp.meiyuan.entity.GroupBO;
 import com.myp.meiyuan.entity.MonitorBo;
 import com.myp.meiyuan.entity.OperationRecoderBo;
+import com.myp.meiyuan.entity.UserBo;
 import com.myp.meiyuan.entity.WaitRecoderBo;
 import com.myp.meiyuan.util.MD5;
 import com.myp.meiyuan.util.StringUtils;
@@ -42,10 +44,10 @@ public class HttpServiceIml {
     /**
      * 获取设备列表
      */
-    public static Observable<List<DeviceBO>> getDeviceList() {
+    public static Observable<List<DeviceBO>> getDeviceList(String groupId) {
         JSONObject object = new JSONObject();
         try {
-            object.put("groupId", "51");
+            object.put("groupId", groupId);
             return getService().getDeviceGroup(object.toString()).compose(RxResultHelper.<List<DeviceBO>>httpResult01());
         } catch (JSONException e) {
             e.printStackTrace();
@@ -188,5 +190,49 @@ public class HttpServiceIml {
         return null;
     }
 
+    /**
+     * 获取个人信息
+     */
+    public static Observable<UserBo> getUserMessage(String userName) {
+        JSONObject object = new JSONObject();
+        try {
+            object.put("username", userName);
+            return getService().getUserMessage(object.toString()).compose(RxResultHelper.<UserBo>httpResult01());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * 获取设备名称和所属分组
+     */
+    public static Observable<List<DeviceAndGroupBo>> getDeviceAndGroup(String userName) {
+        JSONObject object = new JSONObject();
+        try {
+            object.put("username", userName);
+            return getService().getAllNumDevices(object.toString()).compose(RxResultHelper.<List<DeviceAndGroupBo>>httpResult01());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * 修改设备名称和分组
+     */
+    public static Observable<String> udpateDeviceName(String deviceId, String deviceTypeId, String groupId, String deviceName) {
+        JSONObject object = new JSONObject();
+        try {
+            object.put("deviceId", deviceId);
+            object.put("deviceTypeId", deviceTypeId);
+            object.put("groupId", groupId);
+            object.put("deviceName", deviceName);
+            return getService().updateDeviceName(object.toString()).compose(RxResultHelper.<String>httpResult01());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
 }

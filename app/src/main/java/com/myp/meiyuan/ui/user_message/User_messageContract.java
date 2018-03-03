@@ -12,10 +12,13 @@ import com.myp.meiyuan.mvp.BaseView;
 
 public class User_messageContract {
     interface View extends BaseView {
-        
+
+
     }
 
     interface  Presenter extends BasePresenter<View> {
-        
+
+
+        void getUserMessage(String userName);
     }
 }

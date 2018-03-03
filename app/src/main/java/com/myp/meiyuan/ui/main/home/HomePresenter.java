@@ -6,6 +6,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.myp.meiyuan.api.HttpServiceIml;
 import com.myp.meiyuan.entity.DeviceBO;
+import com.myp.meiyuan.entity.GroupBO;
 import com.myp.meiyuan.mvp.BasePresenterImpl;
 
 import java.util.ArrayList;
@@ -21,8 +22,8 @@ import rx.Subscriber;
 public class HomePresenter extends BasePresenterImpl<HomeContract.View> implements HomeContract.Presenter {
 
     @Override
-    public void getDeviceList() {
-        HttpServiceIml.getDeviceList().subscribe(new Subscriber<List<DeviceBO>>() {
+    public void getDeviceList(final String groupId) {
+        HttpServiceIml.getDeviceList(groupId).subscribe(new Subscriber<List<DeviceBO>>() {
             @Override
             public void onCompleted() {
 
@@ -36,27 +37,31 @@ public class HomePresenter extends BasePresenterImpl<HomeContract.View> implemen
             @Override
             public void onNext(List<DeviceBO> s) {
                 if (mView != null) {
-                    mView.getDeviceList(s);
+                    mView.getDeviceList(s,groupId);
                 }
             }
         });
     }
 
+    @Override
+    public void getTab() {
+        HttpServiceIml.getGroupList().subscribe(new Subscriber<List<GroupBO>>() {
+            @Override
+            public void onCompleted() {
 
-    /**
-     * 去掉所有反斜杠并将数据转为对象，后期最好后台返回不带反斜杠的数据
-     */
-    private void stringToObject(List<String> s) {
-        List<String> newList = new ArrayList<>();
-        for (String str : s) {
-            newList.add(str.replaceAll("\\\\", ""));
-        }
-        List<DeviceBO> deviceBOs = new Gson().fromJson(newList.toString(), new TypeToken<List<DeviceBO>>() {
-        }.getType());
-        if (mView != null) {
-            mView.getDeviceList(deviceBOs);
-        }
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(List<GroupBO> groupBOs) {
+                if(mView != null){
+                    mView.getTab(groupBOs);
+                }
+
+            }});
     }
-
-
 }

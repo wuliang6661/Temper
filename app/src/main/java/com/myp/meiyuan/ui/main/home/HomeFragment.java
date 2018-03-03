@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -16,12 +17,14 @@ import android.widget.TextView;
 
 import com.myp.meiyuan.R;
 import com.myp.meiyuan.entity.DeviceBO;
+import com.myp.meiyuan.entity.GroupBO;
 import com.myp.meiyuan.mvp.MVPBaseFragment;
 import com.myp.meiyuan.ui.deviceadd.DeviceAddActivity;
 import com.myp.meiyuan.ui.monitormessage.MonitorMessageActivity;
 import com.myp.meiyuan.widget.lgrecycleadapter.LGRecycleViewAdapter;
 import com.myp.meiyuan.widget.lgrecycleadapter.LGViewHolder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
@@ -43,8 +46,14 @@ public class HomeFragment extends MVPBaseFragment<HomeContract.View, HomePresent
     TextView addDevices;
     @Bind(R.id.title)
     TextView title;
+    @Bind(R.id.tab_layout)
+    TabLayout tabLayout;
 
     LGRecycleViewAdapter<DeviceBO> adapter;
+
+    List<GroupBO> jianceGroups;
+
+    int position;
 
 
     @Nullable
@@ -66,8 +75,26 @@ public class HomeFragment extends MVPBaseFragment<HomeContract.View, HomePresent
         title.setText("监测设备");
 
         addDevices.setOnClickListener(this);
-        mPresenter.getDeviceList();
         handler.postDelayed(runnable, updateTime);
+        mPresenter.getTab();
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                position = tab.getPosition();
+                setAdapter(new ArrayList<DeviceBO>());
+                mPresenter.getDeviceList(jianceGroups.get(tab.getPosition()).getGroupId() + "");
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
     }
 
 
@@ -169,13 +196,29 @@ public class HomeFragment extends MVPBaseFragment<HomeContract.View, HomePresent
     Runnable runnable = new Runnable() {
         @Override
         public void run() {
-            mPresenter.getDeviceList();
+            if (jianceGroups != null) {
+                mPresenter.getDeviceList(jianceGroups.get(position).getGroupId() + "");
+            }
             handler.postDelayed(this, updateTime);
         }
     };
 
     @Override
-    public void getDeviceList(List<DeviceBO> deviceBOs) {
-        setAdapter(deviceBOs);
+    public void getDeviceList(List<DeviceBO> deviceBOs, String groupId) {
+        if (jianceGroups.get(position).getGroupId() == Integer.parseInt(groupId)) {
+            setAdapter(deviceBOs);
+        }
+    }
+
+    @Override
+    public void getTab(List<GroupBO> groupBOs) {
+        jianceGroups = new ArrayList<>();
+        for (GroupBO groupBO : groupBOs) {
+            if (groupBO.getGroupType() == 0) {
+                jianceGroups.add(groupBO);
+                tabLayout.addTab(tabLayout.newTab().setText(groupBO.getGroupName()));
+            }
+        }
+        mPresenter.getDeviceList(jianceGroups.get(0).getGroupId() + "");
     }
 }
