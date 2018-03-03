@@ -16,6 +16,7 @@ public class User_passwordContract {
     }
 
     interface  Presenter extends BasePresenter<View> {
-        
+
+        void updatePassword(String userName, String oldPassword, String newPassword, String newPassword2);
     }
 }

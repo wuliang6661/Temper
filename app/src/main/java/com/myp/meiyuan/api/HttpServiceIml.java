@@ -4,6 +4,9 @@ import com.myp.meiyuan.entity.DeviceBO;
 import com.myp.meiyuan.entity.FamenBo;
 import com.myp.meiyuan.entity.GroupBO;
 import com.myp.meiyuan.entity.MonitorBo;
+import com.myp.meiyuan.entity.OperationRecoderBo;
+import com.myp.meiyuan.entity.WaitRecoderBo;
+import com.myp.meiyuan.util.MD5;
 import com.myp.meiyuan.util.StringUtils;
 import com.myp.meiyuan.util.rx.RxResultHelper;
 
@@ -131,6 +134,54 @@ public class HttpServiceIml {
             object.put("timeStatus", timeStatus);
             object.put("firstLetter", firstLetter);
             return getService().updateControl(object.toString()).compose(RxResultHelper.httpResult01());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
+    /**
+     * 获取告警记录
+     */
+    public static Observable<List<WaitRecoderBo>> getWaitRecoders(String userName) {
+        JSONObject object = new JSONObject();
+        try {
+            object.put("username", userName);
+            return getService().getWaitRecoder(object.toString()).compose(RxResultHelper.<List<WaitRecoderBo>>httpResult01());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
+    /**
+     * 获取操作记录
+     */
+    public static Observable<List<OperationRecoderBo>> getOperationRecoders(String userName) {
+        JSONObject object = new JSONObject();
+        try {
+            object.put("username", userName);
+            return getService().getOperationRecoder(object.toString()).compose(RxResultHelper.<List<OperationRecoderBo>>httpResult01());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
+    /**
+     * 修改密码
+     */
+    public static Observable<String> updatePassWord(String userName, String oldPassword, String newPassword, String newPassword2) {
+        JSONObject object = new JSONObject();
+        try {
+            object.put("username", userName);
+            object.put("oldPassword", MD5.strToMd5Low32(oldPassword));
+            object.put("newPassword", MD5.strToMd5Low32(newPassword));
+            object.put("newPassword2", MD5.strToMd5Low32(newPassword2));
+            return getService().updatePassWord(object.toString()).compose(RxResultHelper.<String>httpResult01());
         } catch (Exception e) {
             e.printStackTrace();
         }
