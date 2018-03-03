@@ -33,5 +33,6 @@ public class User_messageActivity extends MVPBaseActivity<User_messageContract.V
         setTitle("个人信息");
         addDevices.setText("完成");
 
+
     }
 }

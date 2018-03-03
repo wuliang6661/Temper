@@ -40,6 +40,7 @@ android {
 allprojects {
     repositories {
         jcenter()
+        maven { url "https://jitpack.io" }
     }
 }
 
@@ -76,4 +77,5 @@ dependencies {
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.mylhyl:circleDialog:2.2.1'
     compile 'com.jakewharton:butterknife:7.0.1'
+    compile 'com.github.PhilJay:MPAndroidChart:v2.2.4'
 }
