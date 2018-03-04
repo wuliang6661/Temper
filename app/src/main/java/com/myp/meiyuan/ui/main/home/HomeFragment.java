@@ -81,7 +81,7 @@ public class HomeFragment extends MVPBaseFragment<HomeContract.View, HomePresent
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 position = tab.getPosition();
-                setAdapter(new ArrayList<DeviceBO>());
+                recycle.setVisibility(View.GONE);
                 mPresenter.getDeviceList(jianceGroups.get(tab.getPosition()).getGroupId() + "");
             }
 
@@ -205,6 +205,7 @@ public class HomeFragment extends MVPBaseFragment<HomeContract.View, HomePresent
 
     @Override
     public void getDeviceList(List<DeviceBO> deviceBOs, String groupId) {
+        recycle.setVisibility(View.VISIBLE);
         if (jianceGroups.get(position).getGroupId() == Integer.parseInt(groupId)) {
             setAdapter(deviceBOs);
         }

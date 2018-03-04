@@ -73,7 +73,7 @@ public class MonitorMessageActivity extends MVPBaseActivity<MonitorMessageContra
         setTitle(deviceBO.getDeviceName());
         initView(deviceBO);
         messageFragment = MessageFragment.newInstance(deviceBO);
-        chartFragment = new ChartFragment();
+        chartFragment = ChartFragment.newInstance(deviceBO);
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(chartFragment);
         fragments.add(messageFragment);

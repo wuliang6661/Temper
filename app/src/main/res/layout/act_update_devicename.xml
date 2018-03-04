@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="19dp"
-            android:text="@string/jianceshebei"
+            android:text="选择大棚"
             android:textColor="#515151"
             android:textSize="16dp" />
 

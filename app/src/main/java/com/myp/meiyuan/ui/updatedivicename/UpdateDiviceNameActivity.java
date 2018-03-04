@@ -13,7 +13,6 @@ import com.myp.meiyuan.entity.DeviceAndGroupBo;
 import com.myp.meiyuan.entity.DeviceConGroup;
 import com.myp.meiyuan.mvp.MVPBaseActivity;
 import com.myp.meiyuan.ui.updatedivicename.updatename.UpdateNameActivity;
-import com.myp.meiyuan.ui.updategreenhouse.update.UpdateActivity;
 import com.myp.meiyuan.widget.lgrecycleadapter.LGRecycleViewAdapter;
 import com.myp.meiyuan.widget.lgrecycleadapter.LGViewHolder;
 
@@ -57,7 +56,7 @@ public class UpdateDiviceNameActivity extends MVPBaseActivity<UpdateDiviceNameCo
     @Override
     protected void onResume() {
         super.onResume();
-        mPresenter.getDeviceNameAndGroup("ganzhou");
+        mPresenter.getDeviceNameAndGroup();
     }
 
     private void setAdapter(List<DeviceConGroup> list) {

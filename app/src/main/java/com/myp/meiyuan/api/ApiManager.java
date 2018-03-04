@@ -25,7 +25,6 @@ import okio.BufferedSource;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
-import rx.Observable;
 
 /**
  * 作者 by wuliang 时间 16/11/24.
@@ -155,42 +154,6 @@ public class ApiManager {
         } catch (EOFException e) {
             return false; // Truncated UTF-8 sequence.
         }
-    }
-
-
-    /**
-     * 获取rxjava实例对象，进行网络请求
-     */
-
-//    public Observable<List<HYClassify>> getHYClassify(){
-//        if (mHuYaService==null) mHuYaService=configRetrofit(HuYaService.class,HuYaService.URL);
-//        return mHuYaService.getClassify()
-//                .compose(RxResultHelper.<List<HYClassify>>huyaResult());
-//    }
-
-
-    /**
-     * 获取微信数据
-     *
-     * @param appid
-     * @param sercret
-     * @param code
-     * @param grant_type
-     * @return
-     */
-    public Observable getWxMesage(String appid, String sercret, String code, String grant_type) {
-        if (service == null)
-            service = configRetrofit(OtherHttpService.class, OtherHttpService.WXurL);
-        return service.getWxMessage(appid, sercret, code, grant_type);
-    }
-
-    /**
-     * 获取微信用户数据
-     */
-    public Observable getUserMessage(String access_token, String openid) {
-        if (service == null)
-            service = configRetrofit(OtherHttpService.class, OtherHttpService.WXurL);
-        return service.getUserMessage(access_token, openid);
     }
 
 

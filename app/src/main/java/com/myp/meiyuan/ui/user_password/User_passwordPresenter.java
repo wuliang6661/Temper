@@ -1,7 +1,9 @@
 package com.myp.meiyuan.ui.user_password;
 
 import com.myp.meiyuan.api.HttpServiceIml;
+import com.myp.meiyuan.entity.ResultBo;
 import com.myp.meiyuan.mvp.BasePresenterImpl;
+import com.myp.meiyuan.util.LogUtils;
 
 import rx.Subscriber;
 
@@ -13,8 +15,8 @@ import rx.Subscriber;
 public class User_passwordPresenter extends BasePresenterImpl<User_passwordContract.View> implements User_passwordContract.Presenter {
 
     @Override
-    public void updatePassword(String userName, String oldPassword, String newPassword, String newPassword2) {
-        HttpServiceIml.updatePassWord(userName, oldPassword, newPassword, newPassword2).subscribe(new Subscriber<String>() {
+    public void updatePassword(String oldPassword, String newPassword, String newPassword2) {
+        HttpServiceIml.updatePassWord(oldPassword, newPassword, newPassword2).subscribe(new Subscriber<ResultBo>() {
             @Override
             public void onCompleted() {
 
@@ -26,8 +28,14 @@ public class User_passwordPresenter extends BasePresenterImpl<User_passwordContr
             }
 
             @Override
-            public void onNext(String s) {
-
+            public void onNext(ResultBo s) {
+                if (mView != null) {
+                    if ("1".equals(s.getMsg())) {
+                        mView.onSuress();
+                    } else {
+                        LogUtils.showToast("修改失败！");
+                    }
+                }
             }
         });
     }

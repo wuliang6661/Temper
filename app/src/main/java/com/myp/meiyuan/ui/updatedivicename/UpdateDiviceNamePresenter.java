@@ -18,8 +18,8 @@ import rx.Subscriber;
 public class UpdateDiviceNamePresenter extends BasePresenterImpl<UpdateDiviceNameContract.View> implements UpdateDiviceNameContract.Presenter {
 
     @Override
-    public void getDeviceNameAndGroup(String userName) {
-        HttpServiceIml.getDeviceAndGroup(userName).subscribe(new Subscriber<List<DeviceAndGroupBo>>() {
+    public void getDeviceNameAndGroup() {
+        HttpServiceIml.getDeviceAndGroup().subscribe(new Subscriber<List<DeviceAndGroupBo>>() {
             @Override
             public void onCompleted() {
 

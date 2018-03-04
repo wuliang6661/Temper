@@ -22,6 +22,6 @@ public class UpdateDiviceNameContract {
         /**
          * 获取设备名称和所属分组
          */
-        void getDeviceNameAndGroup(String userName);
+        void getDeviceNameAndGroup();
     }
 }

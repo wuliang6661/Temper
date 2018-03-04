@@ -6,12 +6,16 @@ import com.myp.meiyuan.entity.FamenBo;
 import com.myp.meiyuan.entity.GroupBO;
 import com.myp.meiyuan.entity.MonitorBo;
 import com.myp.meiyuan.entity.OperationRecoderBo;
+import com.myp.meiyuan.entity.ResultBo;
 import com.myp.meiyuan.entity.UserBo;
 import com.myp.meiyuan.entity.WaitRecoderBo;
 
 import java.util.List;
 
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Query;
 import rx.Observable;
 
@@ -23,10 +27,10 @@ import rx.Observable;
 
 public interface HttpService {
 
-    String URL = "http://120.27.133.127/";   //测试服
+    String URL = "http://120.27.133.127";   //测试服
 
 
-    @GET("xiaokedou1/equipment/getDataDevicesByGroupId")
+    @GET("/xiaokedou1/equipment/getDataDevicesByGroupId")
     Observable<List<DeviceBO>> getDeviceGroup(@Query("params") String params);
 
 
@@ -75,7 +79,14 @@ public interface HttpService {
      * 修改密码
      */
     @GET("/xiaokedou/user/updatePassword")
-    Observable<String> updatePassWord(@Query("params") String params);
+    Observable<ResultBo> updatePassWord(@Query("params") String params);
+
+    /**
+     * 上传头像
+     */
+    @FormUrlEncoded
+    @POST("/xiaokedou1/user/uploadImg")
+    Observable<ResultBo> updateUserImg(@Field("params") String params);
 
 
     /**
@@ -101,6 +112,12 @@ public interface HttpService {
      */
     @GET("/xiaokedou1/equipment/updatecDeviceName")
     Observable<String> updateDeviceName(@Query("params") String params);
+
+    /**
+     * 登录
+     */
+    @GET("/xiaokedou1/user/login")
+    Observable<String> userLogin(@Query("params") String params);
 
 
 }

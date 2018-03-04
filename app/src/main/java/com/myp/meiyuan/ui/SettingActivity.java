@@ -6,10 +6,17 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bigkoo.alertview.AlertView;
+import com.bigkoo.alertview.OnDismissListener;
+import com.bigkoo.alertview.OnItemClickListener;
 import com.myp.meiyuan.R;
 import com.myp.meiyuan.base.BaseActivity;
+import com.myp.meiyuan.base.MyApplication;
+import com.myp.meiyuan.config.LocalConfiguration;
+import com.myp.meiyuan.ui.login.LoginActivity;
 import com.myp.meiyuan.ui.user_message.User_messageActivity;
 import com.myp.meiyuan.ui.user_password.User_passwordActivity;
+import com.myp.meiyuan.util.AppManager;
 
 import butterknife.Bind;
 
@@ -57,7 +64,24 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
                 gotoActivity(User_passwordActivity.class, false);
                 break;
             case R.id.cancel_id:
+                AlertView mAlertView = new AlertView("提示", "是否注销重新登录？", "取消", new String[]{"确定"},
+                        null, SettingActivity.this,
+                        AlertView.Style.Alert, new OnItemClickListener() {
+                    @Override
+                    public void onItemClick(Object o, int posi) {
+                        if (posi == 0) {
+                            MyApplication.sp.remove(LocalConfiguration.userName);
+                            gotoActivity(LoginActivity.class, false);
+                            AppManager.getAppManager().goBackMain();
+                        }
+                    }
+                }).setCancelable(true).setOnDismissListener(new OnDismissListener() {
+                    @Override
+                    public void onDismiss(Object o) {
 
+                    }
+                });
+                mAlertView.show();
                 break;
         }
 

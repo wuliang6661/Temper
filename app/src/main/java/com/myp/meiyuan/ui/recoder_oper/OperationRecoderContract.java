@@ -26,12 +26,12 @@ public class OperationRecoderContract {
         /**
          * 获取告警记录
          */
-        void getWaitRecoder(String userName);
+        void getWaitRecoder();
 
         /**
          * 获取操作记录
          */
-        void getOperationRecoder(String userName);
+        void getOperationRecoder();
 
     }
 }

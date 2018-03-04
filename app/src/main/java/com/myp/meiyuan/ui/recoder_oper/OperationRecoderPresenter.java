@@ -17,8 +17,8 @@ import rx.Subscriber;
 public class OperationRecoderPresenter extends BasePresenterImpl<OperationRecoderContract.View> implements OperationRecoderContract.Presenter {
 
     @Override
-    public void getWaitRecoder(String userName) {
-        HttpServiceIml.getWaitRecoders(userName).subscribe(new Subscriber<List<WaitRecoderBo>>() {
+    public void getWaitRecoder() {
+        HttpServiceIml.getWaitRecoders().subscribe(new Subscriber<List<WaitRecoderBo>>() {
             @Override
             public void onCompleted() {
 
@@ -39,8 +39,8 @@ public class OperationRecoderPresenter extends BasePresenterImpl<OperationRecode
     }
 
     @Override
-    public void getOperationRecoder(String userName) {
-        HttpServiceIml.getOperationRecoders(userName).subscribe(new Subscriber<List<OperationRecoderBo>>() {
+    public void getOperationRecoder() {
+        HttpServiceIml.getOperationRecoders().subscribe(new Subscriber<List<OperationRecoderBo>>() {
             @Override
             public void onCompleted() {
 
