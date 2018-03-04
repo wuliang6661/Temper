@@ -173,6 +173,26 @@ public class HttpServiceIml {
         return null;
     }
 
+    /**
+     * 获取红外入侵记录
+     */
+    /**
+     * 获取告警记录
+     */
+    public static Observable<List<WaitRecoderBo>> getInvation() {
+        JSONObject object = new JSONObject();
+        try {
+            object.put("username", MyApplication.sp.getString(LocalConfiguration.userName));
+            return getService().getInvadeInfo(object.toString()).compose(RxResultHelper.<List<WaitRecoderBo>>httpResult01());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
+
+
 
     /**
      * 修改密码

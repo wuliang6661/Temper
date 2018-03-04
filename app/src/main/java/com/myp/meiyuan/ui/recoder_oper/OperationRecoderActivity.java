@@ -15,7 +15,6 @@ import com.myp.meiyuan.mvp.MVPBaseActivity;
 import com.myp.meiyuan.widget.lgrecycleadapter.LGRecycleViewAdapter;
 import com.myp.meiyuan.widget.lgrecycleadapter.LGViewHolder;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
@@ -68,6 +67,7 @@ public class OperationRecoderActivity extends MVPBaseActivity<OperationRecoderCo
                 break;
             case 3:
                 setTitle("红外入侵");
+                mPresenter.getInvotionRecoder();
                 break;
         }
     }
@@ -81,6 +81,11 @@ public class OperationRecoderActivity extends MVPBaseActivity<OperationRecoderCo
     @Override
     public void getOperationRecoder(List<OperationRecoderBo> operationRecoderBos) {
         setOperAdapter(operationRecoderBos);
+    }
+
+    @Override
+    public void getInvotionRecoder(List<WaitRecoderBo> waitRecoderBos) {
+        setAdapter(waitRecoderBos);
     }
 
 

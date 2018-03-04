@@ -19,6 +19,8 @@ public class OperationRecoderContract {
 
         void getOperationRecoder(List<OperationRecoderBo> operationRecoderBos);
 
+        void getInvotionRecoder(List<WaitRecoderBo> waitRecoderBos);
+
     }
 
     interface Presenter extends BasePresenter<View> {
@@ -32,6 +34,9 @@ public class OperationRecoderContract {
          * 获取操作记录
          */
         void getOperationRecoder();
+
+
+        void getInvotionRecoder();
 
     }
 }

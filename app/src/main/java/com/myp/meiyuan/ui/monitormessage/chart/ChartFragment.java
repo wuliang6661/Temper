@@ -103,7 +103,7 @@ public class ChartFragment extends MVPBaseFragment<ChartContract.View, ChartPres
         mChart.getDescription().setEnabled(false);
         // enable touch gestures
         mChart.setTouchEnabled(true);
-        mChart.setDragDecelerationFrictionCoef(0.1f);
+        mChart.setDragDecelerationFrictionCoef(0.5f);
         // enable scaling and dragging
         mChart.setDragEnabled(true);
         mChart.setScaleEnabled(true);

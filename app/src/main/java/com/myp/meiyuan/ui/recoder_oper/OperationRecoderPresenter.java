@@ -59,4 +59,26 @@ public class OperationRecoderPresenter extends BasePresenterImpl<OperationRecode
             }
         });
     }
+
+    @Override
+    public void getInvotionRecoder() {
+        HttpServiceIml.getInvation().subscribe(new Subscriber<List<WaitRecoderBo>>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(List<WaitRecoderBo> waitRecoderBos) {
+                if (mView != null) {
+                    mView.getInvotionRecoder(waitRecoderBos);
+                }
+            }
+        });
+    }
 }

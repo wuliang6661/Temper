@@ -102,6 +102,13 @@ public interface HttpService {
     Observable<List<OperationRecoderBo>> getOperationRecoder(@Query("params") String params);
 
     /**
+     * 获取红外入侵记录
+     */
+    @GET("/xiaokedou1/message/invadeInfo")
+    Observable<List<WaitRecoderBo>> getInvadeInfo(@Query("params") String params);
+
+
+    /**
      * 获取设备名称和所属分组
      */
     @GET("/xiaokedou1/equipment/getAllNumericDevices")
