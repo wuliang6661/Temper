@@ -2,11 +2,11 @@ package com.myp.meiyuan.api;
 
 import com.myp.meiyuan.base.MyApplication;
 import com.myp.meiyuan.config.LocalConfiguration;
+import com.myp.meiyuan.entity.DataBo;
 import com.myp.meiyuan.entity.DeviceAndGroupBo;
 import com.myp.meiyuan.entity.DeviceBO;
 import com.myp.meiyuan.entity.FamenBo;
 import com.myp.meiyuan.entity.GroupBO;
-import com.myp.meiyuan.entity.MonitorBo;
 import com.myp.meiyuan.entity.OperationRecoderBo;
 import com.myp.meiyuan.entity.ResultBo;
 import com.myp.meiyuan.entity.UserBo;
@@ -61,13 +61,14 @@ public class HttpServiceIml {
     /**
      * 获取设备检测状态
      */
-    public static Observable<List<MonitorBo>> getDeviceSearch(String deviceTypeId, String deviceId) {
+    public static Observable<DataBo> getDeviceSearch(String deviceTypeId, String deviceId, String timeGap) {
         JSONObject object = new JSONObject();
         try {
             object.put("username", MyApplication.sp.getString(LocalConfiguration.userName));
             object.put("deviceTypeId", deviceTypeId);
             object.put("deviceId", deviceId);
-            return getService().getSearchList(object.toString()).compose(RxResultHelper.<List<MonitorBo>>httpResult01());
+            object.put("timeGap", timeGap);
+            return getService().getSearchList(object.toString()).compose(RxResultHelper.<DataBo>httpResult01());
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -191,9 +192,6 @@ public class HttpServiceIml {
     }
 
 
-
-
-
     /**
      * 修改密码
      */
@@ -280,7 +278,7 @@ public class HttpServiceIml {
                                                 String addressDetail) {
         JSONObject object = new JSONObject();
         try {
-            object.put("userName",MyApplication.sp.getString(LocalConfiguration.userName));
+            object.put("userName", MyApplication.sp.getString(LocalConfiguration.userName));
             object.put("realName", realName);
             object.put("gender", gender);
             object.put("telPhone", telPhone);
@@ -301,10 +299,10 @@ public class HttpServiceIml {
     /**
      * 上传用户头像
      */
-    public static Observable<ResultBo> updateUserImage(String photo){
+    public static Observable<ResultBo> updateUserImage(String photo) {
         JSONObject object = new JSONObject();
         try {
-            object.put("username",MyApplication.sp.getString(LocalConfiguration.userName));
+            object.put("username", MyApplication.sp.getString(LocalConfiguration.userName));
             object.put("photo", photo);
             return getService().updateUserImg(object.toString()).compose(RxResultHelper.<ResultBo>httpResult01());
         } catch (Exception e) {

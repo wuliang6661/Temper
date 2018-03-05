@@ -1,5 +1,6 @@
 package com.myp.meiyuan.api;
 
+import com.myp.meiyuan.entity.DataBo;
 import com.myp.meiyuan.entity.DeviceAndGroupBo;
 import com.myp.meiyuan.entity.DeviceBO;
 import com.myp.meiyuan.entity.FamenBo;
@@ -35,7 +36,7 @@ public interface HttpService {
 
 
     @GET("/xiaokedou1/device/searchOneDevice")
-    Observable<List<MonitorBo>> getSearchList(@Query("params") String params);
+    Observable<DataBo> getSearchList(@Query("params") String params);
 
 
     /**

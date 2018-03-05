@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -22,9 +23,13 @@ import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.myp.meiyuan.R;
+import com.myp.meiyuan.entity.DataBo;
 import com.myp.meiyuan.entity.DeviceBO;
 import com.myp.meiyuan.entity.MonitorBo;
 import com.myp.meiyuan.mvp.MVPBaseFragment;
+import com.myp.meiyuan.util.StringUtils;
+import com.myp.meiyuan.util.TimeUtils;
+import com.myp.meiyuan.widget.MyMarkerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +42,7 @@ import butterknife.ButterKnife;
  */
 
 public class ChartFragment extends MVPBaseFragment<ChartContract.View, ChartPresenter>
-        implements ChartContract.View, OnChartValueSelectedListener,RadioGroup.OnCheckedChangeListener {
+        implements ChartContract.View, OnChartValueSelectedListener, RadioGroup.OnCheckedChangeListener {
 
 
     @Bind(R.id.chart1)
@@ -62,6 +67,11 @@ public class ChartFragment extends MVPBaseFragment<ChartContract.View, ChartPres
     RadioGroup radioLayout;
 
     RadioButton[] radioButtons;
+    YAxis leftAxis;
+    YAxis rightAxis;
+    @Bind(R.id.time_layout)
+    LinearLayout timeLayout;
+
 
     public static ChartFragment newInstance(DeviceBO s) {
         ChartFragment myFragment = new ChartFragment();
@@ -90,7 +100,7 @@ public class ChartFragment extends MVPBaseFragment<ChartContract.View, ChartPres
         invition();
         radioButtons = new RadioButton[]{radio01, radio02, radio03, radio04};
         radioLayout.setOnCheckedChangeListener(this);
-        mPresenter.getSeashList(deviceBO.getDeviceTypeId() + "", deviceBO.getDeviceId() + "");
+        mPresenter.getSeashList(deviceBO.getDeviceTypeId() + "", deviceBO.getDeviceId() + "", "15");
     }
 
 
@@ -112,7 +122,12 @@ public class ChartFragment extends MVPBaseFragment<ChartContract.View, ChartPres
         // if disabled, scaling can be done on x- and y-axis separately
         mChart.setPinchZoom(true);
         // set an alternative background color
+        MyMarkerView mv = new MyMarkerView(getActivity(), R.layout.custom_marker_view);
+        mv.setChartView(mChart); // For bounds control
+        mChart.setMarker(mv); // Set the marker to the chart
         mChart.setBackgroundColor(Color.WHITE);
+
+
         setData(new ArrayList<MonitorBo>());
         mChart.animateX(2500);
 
@@ -122,7 +137,7 @@ public class ChartFragment extends MVPBaseFragment<ChartContract.View, ChartPres
         xAxis.setDrawGridLines(false);
         xAxis.setDrawAxisLine(false);
 
-        YAxis leftAxis = mChart.getAxisLeft();
+        leftAxis = mChart.getAxisLeft();
         leftAxis.setTextColor(Color.parseColor("#999999"));
         leftAxis.setAxisMaximum(40f);
         leftAxis.setAxisMinimum(10f);
@@ -130,7 +145,7 @@ public class ChartFragment extends MVPBaseFragment<ChartContract.View, ChartPres
         leftAxis.setAxisLineColor(Color.WHITE);
         leftAxis.setGranularityEnabled(true);
 
-        YAxis rightAxis = mChart.getAxisRight();
+        rightAxis = mChart.getAxisRight();
         rightAxis.setTextColor(Color.parseColor("#999999"));
         rightAxis.setAxisMaximum(40f);
         rightAxis.setAxisMinimum(10f);
@@ -142,17 +157,33 @@ public class ChartFragment extends MVPBaseFragment<ChartContract.View, ChartPres
 
 
     @Override
-    public void getSearchList(List<MonitorBo> monitorBos) {
-//        if (!monitorBos.isEmpty()) {
-        setData(monitorBos);
-//        }
+    public void getSearchList(DataBo monitorBos) {
+        if (!StringUtils.isEmpty(monitorBos.getMax()) && !StringUtils.isEmpty(monitorBos.getMin())) {
+            leftAxis.setAxisMaximum(Float.parseFloat(monitorBos.getMax()));
+            leftAxis.setAxisMinimum(Float.parseFloat(monitorBos.getMin()));
+            rightAxis.setAxisMaximum(Float.parseFloat(monitorBos.getMax()));
+            rightAxis.setAxisMinimum(Float.parseFloat(monitorBos.getMin()));
+        }
+        if (!monitorBos.getData().isEmpty()) {
+            if (monitorBos.getData().size() >= 2) {
+                timeLayout.setVisibility(View.VISIBLE);
+                startTime.setText(TimeUtils.string2String(monitorBos.getData().get(monitorBos.getData().size() - 1).getLastTime()));
+                time.setText(TimeUtils.string2String(monitorBos.getData().get(monitorBos.getData().size() / 2).getLastTime()));
+                endTime.setText(TimeUtils.string2String(monitorBos.getData().get(0).getLastTime()));
+            } else {
+                timeLayout.setVisibility(View.GONE);
+            }
+        }
+        setData(monitorBos.getData());
     }
 
 
     private void setData(List<MonitorBo> monitorBos) {
-        ArrayList<Entry> yVals1 = new ArrayList<Entry>();
-        for (int i = 0; i < monitorBos.size(); i++) {
-            yVals1.add(new Entry((float) i, Float.parseFloat(monitorBos.get(i).getValue())));
+        ArrayList<Entry> yVals1 = new ArrayList<>();
+        int j = 0;
+        for (int i = monitorBos.size() - 1; i >= 0; i--) {
+            yVals1.add(new Entry((float) j, Float.parseFloat(monitorBos.get(i).getValue())));
+            j++;
         }
         if (monitorBos.isEmpty()) {
             yVals1.add(new Entry(0, 0));
@@ -164,6 +195,7 @@ public class ChartFragment extends MVPBaseFragment<ChartContract.View, ChartPres
             set1.setValues(yVals1);
             mChart.getData().notifyDataChanged();
             mChart.notifyDataSetChanged();
+            mChart.invalidate();
         } else {
             set1 = new LineDataSet(yVals1, "");
             set1.setAxisDependency(YAxis.AxisDependency.LEFT);
@@ -209,18 +241,19 @@ public class ChartFragment extends MVPBaseFragment<ChartContract.View, ChartPres
         switch (i) {
             case R.id.radio_01:
                 setRadio(0);
+                mPresenter.getSeashList(deviceBO.getDeviceTypeId() + "", deviceBO.getDeviceId() + "", "15");
                 break;
             case R.id.radio_02:
                 setRadio(1);
+                mPresenter.getSeashList(deviceBO.getDeviceTypeId() + "", deviceBO.getDeviceId() + "", "30");
                 break;
             case R.id.radio_03:
                 setRadio(2);
+                mPresenter.getSeashList(deviceBO.getDeviceTypeId() + "", deviceBO.getDeviceId() + "", "60");
                 break;
             case R.id.radio_04:
                 setRadio(3);
-                break;
-            case R.id.radio_05:
-                setRadio(4);
+                mPresenter.getSeashList(deviceBO.getDeviceTypeId() + "", deviceBO.getDeviceId() + "", "120");
                 break;
         }
     }
