@@ -15,7 +15,6 @@ import com.myp.meiyuan.mvp.MVPBaseActivity;
 import com.myp.meiyuan.widget.lgrecycleadapter.LGRecycleViewAdapter;
 import com.myp.meiyuan.widget.lgrecycleadapter.LGViewHolder;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
@@ -102,6 +101,7 @@ public class OperationRecoderActivity extends MVPBaseActivity<OperationRecoderCo
             }
         };
         recycle.setAdapter(adapter);
+
     }
 
 
