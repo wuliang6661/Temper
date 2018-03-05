@@ -12,6 +12,7 @@ public class LocalConfiguration {
     public static final String WEIXIN_APP_ID = "填写自己的APP_id";
     public static final String APP_SECRET = "填写自己的AppSecret";
 
+    public static final String userName = "userName";
 
     public static final int DEVICE_TYPE_TEMPERATURE = 1;// 空气温度
 

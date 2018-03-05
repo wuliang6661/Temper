@@ -59,14 +59,15 @@ public class OperationRecoderActivity extends MVPBaseActivity<OperationRecoderCo
         switch (type) {
             case 1:
                 setTitle("操作记录");
-                mPresenter.getOperationRecoder("ganzhou");
+                mPresenter.getOperationRecoder();
                 break;
             case 2:
                 setTitle("告警记录");
-                mPresenter.getWaitRecoder("ganzhou");
+                mPresenter.getWaitRecoder();
                 break;
             case 3:
                 setTitle("红外入侵");
+                mPresenter.getInvotionRecoder();
                 break;
         }
     }
@@ -80,6 +81,11 @@ public class OperationRecoderActivity extends MVPBaseActivity<OperationRecoderCo
     @Override
     public void getOperationRecoder(List<OperationRecoderBo> operationRecoderBos) {
         setOperAdapter(operationRecoderBos);
+    }
+
+    @Override
+    public void getInvotionRecoder(List<WaitRecoderBo> waitRecoderBos) {
+        setAdapter(waitRecoderBos);
     }
 
 

@@ -18,6 +18,15 @@ public class GroupBO implements Serializable {
 
     private int groupId;
     private String groupName;
+    private int groupType;
+
+    public int getGroupType() {
+        return groupType;
+    }
+
+    public void setGroupType(int groupType) {
+        this.groupType = groupType;
+    }
 
     public int getGroupId() {
         return groupId;

@@ -17,6 +17,10 @@
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+
 
     <application
         android:name=".base.MyApplication"
@@ -64,6 +68,9 @@
 
         <!--用户信息-->
         <activity android:name=".ui.user_message.User_messageActivity" />
+
+        <!--修改设备名称-->
+        <activity android:name=".ui.updatedivicename.updatename.UpdateNameActivity" />
 
     </application>
 

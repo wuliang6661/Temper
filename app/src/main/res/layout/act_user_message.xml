@@ -16,7 +16,7 @@
 
 
         <RelativeLayout
-            android:id="@+id/cazuo_recoder"
+            android:id="@+id/person_img_layout"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:background="@color/white">
@@ -29,7 +29,7 @@
                 android:layout_marginLeft="25dp"
                 android:layout_toRightOf="@+id/image1"
                 android:text="头像"
-                android:textColor="#333333"
+                android:textColor="#999999"
                 android:textSize="14dp" />
 
 
@@ -42,12 +42,14 @@
                 android:layout_marginRight="13dp"
                 android:src="@drawable/next_xia" />
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="28dp"
-                android:layout_height="28dp"
+            <com.myp.meiyuan.widget.AvatarImageView
+                android:id="@+id/person_image"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="8dp"
-                android:layout_toLeftOf="@+id/image1_next"
+                android:layout_marginEnd="8dp"
+                android:layout_toStartOf="@+id/image1_next"
+                android:scaleType="centerCrop"
                 android:src="@drawable/person_img" />
 
         </RelativeLayout>
@@ -58,9 +60,12 @@
             android:background="#f1f1f1" />
 
         <RelativeLayout
+            android:id="@+id/person_name_layout"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:background="@color/white">
+            android:background="@color/white"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
 
 
             <TextView
@@ -70,11 +75,12 @@
                 android:layout_marginLeft="25dp"
                 android:layout_toRightOf="@+id/image1"
                 android:text="姓名"
-                android:textColor="#333333"
+                android:textColor="#999999"
                 android:textSize="14dp" />
 
 
             <ImageView
+                android:id="@+id/image"
                 android:layout_width="9dp"
                 android:layout_height="17dp"
                 android:layout_alignParentRight="true"
@@ -82,6 +88,15 @@
                 android:layout_marginRight="13dp"
                 android:src="@drawable/next_xia" />
 
+            <TextView
+                android:id="@+id/person_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="15dp"
+                android:layout_toLeftOf="@+id/image"
+                android:textColor="#999999"
+                android:textSize="14dp" />
 
         </RelativeLayout>
 
@@ -92,6 +107,7 @@
 
 
         <RelativeLayout
+            android:id="@+id/sex_layout"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:background="@color/white">
@@ -104,11 +120,12 @@
                 android:layout_marginLeft="25dp"
                 android:layout_toRightOf="@+id/image1"
                 android:text="性别"
-                android:textColor="#333333"
+                android:textColor="#999999"
                 android:textSize="14dp" />
 
 
             <ImageView
+                android:id="@+id/image01"
                 android:layout_width="9dp"
                 android:layout_height="17dp"
                 android:layout_alignParentRight="true"
@@ -117,6 +134,16 @@
                 android:src="@drawable/next_xia" />
 
 
+            <TextView
+                android:id="@+id/person_sex"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="15dp"
+                android:layout_toLeftOf="@+id/image01"
+                android:textColor="#999999"
+                android:textSize="14dp" />
+
         </RelativeLayout>
 
         <View
@@ -124,8 +151,8 @@
             android:layout_height="1dp"
             android:background="#f1f1f1" />
 
-
         <RelativeLayout
+            android:id="@+id/phone_layout"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:background="@color/white">
@@ -136,13 +163,13 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="25dp"
-                android:layout_toRightOf="@+id/image1"
                 android:text="电话"
-                android:textColor="#333333"
+                android:textColor="#999999"
                 android:textSize="14dp" />
 
 
             <ImageView
+                android:id="@+id/image02"
                 android:layout_width="9dp"
                 android:layout_height="17dp"
                 android:layout_alignParentRight="true"
@@ -150,6 +177,16 @@
                 android:layout_marginRight="13dp"
                 android:src="@drawable/next_xia" />
 
+
+            <TextView
+                android:id="@+id/person_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="15dp"
+                android:layout_toLeftOf="@+id/image02"
+                android:textColor="#999999"
+                android:textSize="14dp" />
 
         </RelativeLayout>
 
@@ -159,6 +196,7 @@
             android:background="#f1f1f1" />
 
         <RelativeLayout
+            android:id="@+id/shouji_layout"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:background="@color/white">
@@ -171,11 +209,12 @@
                 android:layout_marginLeft="25dp"
                 android:layout_toRightOf="@+id/image1"
                 android:text="手机"
-                android:textColor="#333333"
+                android:textColor="#999999"
                 android:textSize="14dp" />
 
 
             <ImageView
+                android:id="@+id/image04"
                 android:layout_width="9dp"
                 android:layout_height="17dp"
                 android:layout_alignParentRight="true"
@@ -183,6 +222,16 @@
                 android:layout_marginRight="13dp"
                 android:src="@drawable/next_xia" />
 
+
+            <TextView
+                android:id="@+id/person_shouji"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="15dp"
+                android:layout_toLeftOf="@+id/image04"
+                android:textColor="#999999"
+                android:textSize="14dp" />
 
         </RelativeLayout>
 
@@ -193,6 +242,7 @@
 
 
         <RelativeLayout
+            android:id="@+id/email_layout"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:background="@color/white">
@@ -205,17 +255,28 @@
                 android:layout_marginLeft="25dp"
                 android:layout_toRightOf="@+id/image1"
                 android:text="邮箱"
-                android:textColor="#333333"
+                android:textColor="#999999"
                 android:textSize="14dp" />
 
 
             <ImageView
+                android:id="@+id/image05"
                 android:layout_width="9dp"
                 android:layout_height="17dp"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="13dp"
                 android:src="@drawable/next_xia" />
+
+            <TextView
+                android:id="@+id/person_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="15dp"
+                android:layout_toLeftOf="@+id/image05"
+                android:textColor="#999999"
+                android:textSize="14dp" />
 
 
         </RelativeLayout>
@@ -227,6 +288,7 @@
 
 
         <RelativeLayout
+            android:id="@+id/gongsi_layout"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:background="@color/white">
@@ -239,17 +301,29 @@
                 android:layout_marginLeft="25dp"
                 android:layout_toRightOf="@+id/image1"
                 android:text="公司"
-                android:textColor="#333333"
+                android:textColor="#999999"
                 android:textSize="14dp" />
 
 
             <ImageView
+                android:id="@+id/image06"
                 android:layout_width="9dp"
                 android:layout_height="17dp"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="13dp"
                 android:src="@drawable/next_xia" />
+
+
+            <TextView
+                android:id="@+id/person_company"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="15dp"
+                android:layout_toLeftOf="@+id/image06"
+                android:textColor="#999999"
+                android:textSize="14dp" />
 
 
         </RelativeLayout>
@@ -261,6 +335,7 @@
 
 
         <RelativeLayout
+            android:id="@+id/bumen_layout"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:background="@color/white">
@@ -273,11 +348,12 @@
                 android:layout_marginLeft="25dp"
                 android:layout_toRightOf="@+id/image1"
                 android:text="部门"
-                android:textColor="#333333"
+                android:textColor="#999999"
                 android:textSize="14dp" />
 
 
             <ImageView
+                android:id="@+id/image08"
                 android:layout_width="9dp"
                 android:layout_height="17dp"
                 android:layout_alignParentRight="true"
@@ -285,6 +361,15 @@
                 android:layout_marginRight="13dp"
                 android:src="@drawable/next_xia" />
 
+            <TextView
+                android:id="@+id/person_department"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="15dp"
+                android:layout_toLeftOf="@+id/image08"
+                android:textColor="#999999"
+                android:textSize="14dp" />
 
         </RelativeLayout>
 
@@ -295,6 +380,7 @@
 
 
         <RelativeLayout
+            android:id="@+id/adress_layout"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:background="@color/white">
@@ -307,11 +393,12 @@
                 android:layout_marginLeft="25dp"
                 android:layout_toRightOf="@+id/image1"
                 android:text="地址"
-                android:textColor="#333333"
+                android:textColor="#999999"
                 android:textSize="14dp" />
 
 
             <ImageView
+                android:id="@+id/imaeg"
                 android:layout_width="9dp"
                 android:layout_height="17dp"
                 android:layout_alignParentRight="true"
@@ -319,6 +406,16 @@
                 android:layout_marginRight="13dp"
                 android:src="@drawable/next_xia" />
 
+
+            <TextView
+                android:id="@+id/person_adress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="15dp"
+                android:layout_toLeftOf="@+id/imaeg"
+                android:textColor="#999999"
+                android:textSize="14dp" />
 
         </RelativeLayout>
 
@@ -336,7 +433,7 @@
             android:hint="请输入详细地址"
             android:maxLength="15"
             android:paddingLeft="25dp"
-            android:textColor="#333333"
+            android:textColor="#999999"
             android:textColorHint="#d9d9d9"
             android:textSize="15dp" />
 

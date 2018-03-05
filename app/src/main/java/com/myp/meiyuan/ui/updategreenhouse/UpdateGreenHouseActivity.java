@@ -1,6 +1,7 @@
 package com.myp.meiyuan.ui.updategreenhouse;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -32,6 +33,8 @@ public class UpdateGreenHouseActivity extends MVPBaseActivity<UpdateGreenHouseCo
     @Bind(R.id.recycle)
     RecyclerView recycle;
 
+    boolean isResult = false;
+
     @Override
     protected int getLayout() {
         return R.layout.act_update_green;
@@ -48,6 +51,8 @@ public class UpdateGreenHouseActivity extends MVPBaseActivity<UpdateGreenHouseCo
         LinearLayoutManager manager = new LinearLayoutManager(this);
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         recycle.setLayoutManager(manager);
+
+        isResult = getIntent().getBooleanExtra("isResult", false);
     }
 
     @Override
@@ -74,9 +79,16 @@ public class UpdateGreenHouseActivity extends MVPBaseActivity<UpdateGreenHouseCo
         adapter.setOnItemClickListener(R.id.item_layout, new LGRecycleViewAdapter.ItemClickListener() {
             @Override
             public void onItemClicked(View view, int position) {
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("groupBO", groupBOs.get(position));
-                gotoActivity(UpdateActivity.class, bundle, false);
+                if (isResult) {
+                    Intent intent = new Intent();
+                    intent.putExtra("groupBO", groupBOs.get(position));
+                    setResult(0x11, intent);
+                    finish();
+                } else {
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("groupBO", groupBOs.get(position));
+                    gotoActivity(UpdateActivity.class, bundle, false);
+                }
             }
         });
         recycle.setAdapter(adapter);

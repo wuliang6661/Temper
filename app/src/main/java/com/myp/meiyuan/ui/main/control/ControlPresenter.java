@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.myp.meiyuan.api.HttpServiceIml;
 import com.myp.meiyuan.entity.FamenBo;
+import com.myp.meiyuan.entity.GroupBO;
 import com.myp.meiyuan.mvp.BasePresenterImpl;
 
 import java.util.List;
@@ -37,5 +38,27 @@ public class ControlPresenter extends BasePresenterImpl<ControlContract.View> im
                 }
             }
         });
+    }
+
+    @Override
+    public void getTab() {
+        HttpServiceIml.getGroupList().subscribe(new Subscriber<List<GroupBO>>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(List<GroupBO> groupBOs) {
+                if(mView != null){
+                    mView.getTab(groupBOs);
+                }
+
+            }});
     }
 }

@@ -81,8 +81,14 @@ public class User_passwordActivity extends MVPBaseActivity<User_passwordContract
                     LogUtils.showToast("两次输入密码不一致！");
                     return;
                 }
-                mPresenter.updatePassword("ganzhou", strEditOldPwd, strEditNewPwd, strEditPwd);
+                mPresenter.updatePassword( strEditOldPwd, strEditNewPwd, strEditPwd);
                 break;
         }
+    }
+
+    @Override
+    public void onSuress() {
+        LogUtils.showToast("修改成功！");
+        finish();
     }
 }

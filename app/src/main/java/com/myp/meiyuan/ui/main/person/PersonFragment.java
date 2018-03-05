@@ -8,16 +8,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.myp.meiyuan.R;
+import com.myp.meiyuan.api.HttpService;
+import com.myp.meiyuan.entity.UserBo;
 import com.myp.meiyuan.mvp.MVPBaseFragment;
 import com.myp.meiyuan.ui.SettingActivity;
 import com.myp.meiyuan.ui.recoder_oper.OperationRecoderActivity;
 import com.myp.meiyuan.ui.updatedivicename.UpdateDiviceNameActivity;
 import com.myp.meiyuan.ui.updategreenhouse.UpdateGreenHouseActivity;
+import com.squareup.picasso.Picasso;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * 我的
@@ -38,6 +43,10 @@ public class PersonFragment extends MVPBaseFragment<PersonContract.View, PersonP
     RelativeLayout updateDeviceName;
     @Bind(R.id.setting)
     RelativeLayout setting;
+    @Bind(R.id.person_img)
+    CircleImageView personImg;
+    @Bind(R.id.person_name)
+    TextView personName;
 
     @Nullable
     @Override
@@ -57,6 +66,12 @@ public class PersonFragment extends MVPBaseFragment<PersonContract.View, PersonP
         hongwaiRecoder.setOnClickListener(this);
         updateDeviceName.setOnClickListener(this);
         setting.setOnClickListener(this);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mPresenter.getUserMessage();
     }
 
     @Override
@@ -94,5 +109,11 @@ public class PersonFragment extends MVPBaseFragment<PersonContract.View, PersonP
                 gotoActivity(SettingActivity.class, false);
                 break;
         }
+    }
+
+    @Override
+    public void getUser(UserBo userBo) {
+        Picasso.with(getActivity()).load(HttpService.URL + "/xiaokedou1" + userBo.getTouxiangsrc()).into(personImg);
+        personName.setText(userBo.getName());
     }
 }

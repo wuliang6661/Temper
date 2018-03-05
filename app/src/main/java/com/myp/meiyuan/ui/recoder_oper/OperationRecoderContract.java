@@ -19,6 +19,8 @@ public class OperationRecoderContract {
 
         void getOperationRecoder(List<OperationRecoderBo> operationRecoderBos);
 
+        void getInvotionRecoder(List<WaitRecoderBo> waitRecoderBos);
+
     }
 
     interface Presenter extends BasePresenter<View> {
@@ -26,12 +28,15 @@ public class OperationRecoderContract {
         /**
          * 获取告警记录
          */
-        void getWaitRecoder(String userName);
+        void getWaitRecoder();
 
         /**
          * 获取操作记录
          */
-        void getOperationRecoder(String userName);
+        void getOperationRecoder();
+
+
+        void getInvotionRecoder();
 
     }
 }

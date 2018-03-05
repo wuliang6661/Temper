@@ -1,10 +1,13 @@
 package com.myp.meiyuan.api;
 
+import com.myp.meiyuan.entity.DeviceAndGroupBo;
 import com.myp.meiyuan.entity.DeviceBO;
 import com.myp.meiyuan.entity.FamenBo;
 import com.myp.meiyuan.entity.GroupBO;
 import com.myp.meiyuan.entity.MonitorBo;
 import com.myp.meiyuan.entity.OperationRecoderBo;
+import com.myp.meiyuan.entity.ResultBo;
+import com.myp.meiyuan.entity.UserBo;
 import com.myp.meiyuan.entity.WaitRecoderBo;
 
 import java.util.List;
@@ -24,10 +27,10 @@ import rx.Observable;
 
 public interface HttpService {
 
-    String URL = "http://120.27.133.127/";   //测试服
+    String URL = "http://120.27.133.127";   //测试服
 
 
-    @GET("xiaokedou1/equipment/getDataDevicesByGroupId")
+    @GET("/xiaokedou1/equipment/getDataDevicesByGroupId")
     Observable<List<DeviceBO>> getDeviceGroup(@Query("params") String params);
 
 
@@ -63,20 +66,27 @@ public interface HttpService {
     /**
      * 获取用户信息
      */
-    @GET("/xiaokedou/user/getUserInfo")
-    Observable<Object> getUserMessage(@Query("params") String params);
+    @GET("/xiaokedou1/user/getUserInfo")
+    Observable<UserBo> getUserMessage(@Query("params") String params);
 
     /**
      * 修改个人信息
      */
-    @GET("/xiaokedou/user/updateUser")
+    @GET("/xiaokedou1/user/updateUser")
     Observable<String> updateUser(@Query("params") String params);
 
     /**
      * 修改密码
      */
     @GET("/xiaokedou/user/updatePassword")
-    Observable<String> updatePassWord(@Query("params") String params);
+    Observable<ResultBo> updatePassWord(@Query("params") String params);
+
+    /**
+     * 上传头像
+     */
+    @FormUrlEncoded
+    @POST("/xiaokedou1/user/uploadImg")
+    Observable<ResultBo> updateUserImg(@Field("params") String params);
 
 
     /**
@@ -90,6 +100,31 @@ public interface HttpService {
      */
     @GET("/xiaokedou1/historyBrowseController/getHistroy")
     Observable<List<OperationRecoderBo>> getOperationRecoder(@Query("params") String params);
+
+    /**
+     * 获取红外入侵记录
+     */
+    @GET("/xiaokedou1/message/invadeInfo")
+    Observable<List<WaitRecoderBo>> getInvadeInfo(@Query("params") String params);
+
+
+    /**
+     * 获取设备名称和所属分组
+     */
+    @GET("/xiaokedou1/equipment/getAllNumericDevices")
+    Observable<List<DeviceAndGroupBo>> getAllNumDevices(@Query("params") String params);
+
+    /**
+     * 修改设备名称和所属分组
+     */
+    @GET("/xiaokedou1/equipment/updatecDeviceName")
+    Observable<String> updateDeviceName(@Query("params") String params);
+
+    /**
+     * 登录
+     */
+    @GET("/xiaokedou1/user/login")
+    Observable<String> userLogin(@Query("params") String params);
 
 
 }

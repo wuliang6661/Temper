@@ -14,7 +14,9 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.mylhyl.circledialog.CircleDialog;
+import com.bigkoo.alertview.AlertView;
+import com.bigkoo.alertview.OnDismissListener;
+import com.bigkoo.alertview.OnItemClickListener;
 import com.myp.meiyuan.R;
 import com.myp.meiyuan.config.LocalConfiguration;
 import com.myp.meiyuan.entity.FamenBo;
@@ -386,20 +388,23 @@ public class ControlMessageActivity extends MVPBaseActivity<ControlMessageContra
                 layout.setOnLongClickListener(new View.OnLongClickListener() {
                     @Override
                     public boolean onLongClick(final View mview) {
-                        new CircleDialog.Builder(ControlMessageActivity.this)
-                                .setTitle("提示")
-                                .setText("是否删除此条？")
-                                .setTextColor(Color.parseColor("#333333"))
-                                .setPositive("确定", new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View view) {
-                                        int position = (int) mview.getTag();
-                                        famenTimeBos.remove(position);
-                                        adapter.setDataList(famenTimeBos);
-                                    }
-                                })
-                                .setNegative("取消", null)
-                                .show();
+                        AlertView mAlertView = new AlertView("提示", "是否删除此条？", "取消", new String[]{"确定"}, null, ControlMessageActivity.this,
+                                AlertView.Style.Alert, new OnItemClickListener() {
+                            @Override
+                            public void onItemClick(Object o, int posi) {
+                                if (posi == 0) {
+                                    int position = (int) mview.getTag();
+                                    famenTimeBos.remove(position);
+                                    adapter.setDataList(famenTimeBos);
+                                }
+                            }
+                        }).setCancelable(true).setOnDismissListener(new OnDismissListener() {
+                            @Override
+                            public void onDismiss(Object o) {
+
+                            }
+                        });
+                        mAlertView.show();
                         return true;
                     }
                 });
