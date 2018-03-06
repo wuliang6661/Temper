@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bigkoo.svprogresshud.SVProgressHUD;
 import com.gyf.barlibrary.ImmersionBar;
 import com.myp.meiyuan.R;
 import com.myp.meiyuan.util.AppManager;
@@ -23,6 +24,9 @@ import butterknife.ButterKnife;
  */
 
 public abstract class BaseActivity extends RxAppCompatActivity {
+
+    private SVProgressHUD svProgressHUD;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +36,7 @@ public abstract class BaseActivity extends RxAppCompatActivity {
         ImmersionBar.with(this)
                 .statusBarDarkFont(true)   //状态栏字体是深色，不写默认为亮色
                 .init();   //解决虚拟按键与状态栏沉浸冲突
+        svProgressHUD = new SVProgressHUD(this);
     }
 
     @Override
@@ -83,6 +88,30 @@ public abstract class BaseActivity extends RxAppCompatActivity {
     public void setTitle(String text) {
         TextView title = (TextView) findViewById(R.id.title);
         title.setText(text);
+    }
+
+
+    /**
+     * 显示加载进度弹窗,点击屏幕消失
+     */
+    protected void showProgress(String msg) {
+        svProgressHUD.showWithStatus(msg, SVProgressHUD.SVProgressHUDMaskType.BlackCancel);
+    }
+
+    /**
+     * 显示加载进度弹窗,点击屏幕不可消失
+     */
+    protected void showNoProgress(String msg) {
+        svProgressHUD.showWithStatus(msg, SVProgressHUD.SVProgressHUDMaskType.Black);
+    }
+
+    /**
+     * 停止弹窗
+     */
+    protected void stopProgress() {
+        if (svProgressHUD.isShowing()) {
+            svProgressHUD.dismiss();
+        }
     }
 
 

@@ -107,7 +107,6 @@ public class OperationRecoderActivity extends MVPBaseActivity<OperationRecoderCo
             }
         };
         recycle.setAdapter(adapter);
-
     }
 
 

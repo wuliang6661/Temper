@@ -76,12 +76,14 @@ public class HomeFragment extends MVPBaseFragment<HomeContract.View, HomePresent
 
         addDevices.setOnClickListener(this);
         handler.postDelayed(runnable, updateTime);
+        showProgress("加载中...");
         mPresenter.getTab();
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 position = tab.getPosition();
                 recycle.setVisibility(View.GONE);
+                showProgress("加载中...");
                 mPresenter.getDeviceList(jianceGroups.get(tab.getPosition()).getGroupId() + "");
             }
 
@@ -205,6 +207,7 @@ public class HomeFragment extends MVPBaseFragment<HomeContract.View, HomePresent
 
     @Override
     public void getDeviceList(List<DeviceBO> deviceBOs, String groupId) {
+        stopProgress();
         recycle.setVisibility(View.VISIBLE);
         if (jianceGroups.get(position).getGroupId() == Integer.parseInt(groupId)) {
             setAdapter(deviceBOs);

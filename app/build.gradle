@@ -79,4 +79,5 @@ dependencies {
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.bigkoo:alertview:1.0.3'
     compile project(':MPChartLib')
+    compile 'com.bigkoo:svprogresshud:1.0.6'
 }
