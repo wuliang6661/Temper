@@ -15,6 +15,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.myp.meiyuan.R;
+import com.myp.meiyuan.entity.DataBo;
 import com.myp.meiyuan.entity.DeviceBO;
 import com.myp.meiyuan.entity.MonitorBo;
 import com.myp.meiyuan.mvp.MVPBaseFragment;
@@ -82,7 +83,7 @@ public class MessageFragment extends MVPBaseFragment<MessageContract.View, Messa
         recycle.setLayoutManager(manager);
         radioButtons = new RadioButton[]{radio01, radio02, radio03, radio04, radio05};
         radioLayout.setOnCheckedChangeListener(this);
-        mPresenter.getSeashList(deviceBO.getDeviceTypeId() + "", deviceBO.getDeviceId() + "");
+        mPresenter.getSeashList(deviceBO.getDeviceTypeId() + "", deviceBO.getDeviceId() + "", "1");
     }
 
 
@@ -91,18 +92,23 @@ public class MessageFragment extends MVPBaseFragment<MessageContract.View, Messa
         switch (i) {
             case R.id.radio_01:
                 setRadio(0);
+                mPresenter.getSeashList(deviceBO.getDeviceTypeId() + "", deviceBO.getDeviceId() + "", "1");
                 break;
             case R.id.radio_02:
                 setRadio(1);
+                mPresenter.getSeashList(deviceBO.getDeviceTypeId() + "", deviceBO.getDeviceId() + "", "5");
                 break;
             case R.id.radio_03:
                 setRadio(2);
+                mPresenter.getSeashList(deviceBO.getDeviceTypeId() + "", deviceBO.getDeviceId() + "", "15");
                 break;
             case R.id.radio_04:
                 setRadio(3);
+                mPresenter.getSeashList(deviceBO.getDeviceTypeId() + "", deviceBO.getDeviceId() + "", "30");
                 break;
             case R.id.radio_05:
                 setRadio(4);
+                mPresenter.getSeashList(deviceBO.getDeviceTypeId() + "", deviceBO.getDeviceId() + "", "60");
                 break;
         }
     }
@@ -142,8 +148,8 @@ public class MessageFragment extends MVPBaseFragment<MessageContract.View, Messa
     }
 
     @Override
-    public void getSearchList(List<MonitorBo> monitorBos) {
-        setAdapter(monitorBos);
+    public void getSearchList(DataBo monitorBos) {
+        setAdapter(monitorBos.getData());
     }
 
     @Override

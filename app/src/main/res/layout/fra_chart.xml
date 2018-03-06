@@ -22,6 +22,7 @@
         android:layout_marginTop="20dp" />
 
     <LinearLayout
+        android:id="@+id/time_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
@@ -82,7 +83,7 @@
             android:button="@null"
             android:checked="true"
             android:gravity="center"
-            android:text="小时"
+            android:text="15分钟"
             android:textColor="@color/white"
             android:textSize="12dp" />
 
@@ -96,7 +97,7 @@
             android:background="@drawable/radio_button_bg"
             android:button="@null"
             android:gravity="center"
-            android:text="天"
+            android:text="30分钟"
             android:textColor="@color/back_bg"
             android:textSize="12dp" />
 
@@ -110,7 +111,7 @@
             android:background="@drawable/radio_button_bg"
             android:button="@null"
             android:gravity="center"
-            android:text="周"
+            android:text="60分钟"
             android:textColor="@color/back_bg"
             android:textSize="12dp" />
 
@@ -123,7 +124,7 @@
             android:background="@drawable/radio_button_bg"
             android:button="@null"
             android:gravity="center"
-            android:text="月"
+            android:text="120分钟"
             android:textColor="@color/back_bg"
             android:textSize="12dp" />
 

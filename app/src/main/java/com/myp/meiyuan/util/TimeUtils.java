@@ -256,6 +256,20 @@ public class TimeUtils {
     }
 
     /**
+     * 将时间字符串转为另一种格式的时间字符串
+     */
+    public static String string2String(String time) {
+        Date date = null;
+        try {
+            date = new SimpleDateFormat(DEFAULT_PATTERN).parse(time);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return new SimpleDateFormat("MM-dd HH:mm:ss").format(date);
+    }
+
+
+    /**
      * 将Date类型转为时间字符串
      * <p>格式为yyyy-MM-dd HH:mm:ss</p>
      *
