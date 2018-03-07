@@ -131,6 +131,7 @@ public class ChartFragment extends MVPBaseFragment<ChartContract.View, ChartPres
         setData(new ArrayList<MonitorBo>());
         mChart.animateX(2500);
 
+
         XAxis xAxis = mChart.getXAxis();
         xAxis.setTextSize(11f);
         xAxis.setTextColor(Color.WHITE);
