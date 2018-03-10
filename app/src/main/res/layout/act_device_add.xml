@@ -20,6 +20,7 @@
             android:orientation="vertical">
 
             <RelativeLayout
+                android:id="@+id/device_name_layout"
                 android:layout_width="match_parent"
                 android:layout_height="50dp">
 
@@ -43,13 +44,16 @@
                     android:src="@drawable/next_xia" />
 
                 <TextView
+                    android:id="@+id/device_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="12dp"
                     android:layout_toLeftOf="@+id/image4_next"
-                    android:text="未填写"
-                    android:textColor="#cccccc"
+                    android:gravity="right"
+                    android:hint="未填写"
+                    android:textColor="#333333"
+                    android:textColorHint="#cccccc"
                     android:textSize="12dp" />
 
 
@@ -63,6 +67,7 @@
 
 
             <RelativeLayout
+                android:id="@+id/device_id_layout"
                 android:layout_width="match_parent"
                 android:layout_height="50dp">
 
@@ -86,13 +91,16 @@
                     android:src="@drawable/next_xia" />
 
                 <TextView
+                    android:id="@+id/device_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="12dp"
                     android:layout_toLeftOf="@+id/next02"
-                    android:text="请输入设备ID"
-                    android:textColor="#cccccc"
+                    android:gravity="right"
+                    android:hint="未填写"
+                    android:textColor="#333333"
+                    android:textColorHint="#cccccc"
                     android:textSize="12dp" />
 
 
@@ -106,6 +114,7 @@
 
 
             <RelativeLayout
+                android:id="@+id/wangguan_name_layout"
                 android:layout_width="match_parent"
                 android:layout_height="50dp">
 
@@ -129,13 +138,16 @@
                     android:src="@drawable/next_xia" />
 
                 <TextView
+                    android:id="@+id/wangguan_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="12dp"
                     android:layout_toLeftOf="@+id/next03"
-                    android:text="未填写"
-                    android:textColor="#cccccc"
+                    android:gravity="right"
+                    android:hint="未填写"
+                    android:textColor="#333333"
+                    android:textColorHint="#cccccc"
                     android:textSize="12dp" />
 
 
@@ -149,6 +161,7 @@
 
 
             <RelativeLayout
+                android:id="@+id/wangguan_id_layout"
                 android:layout_width="match_parent"
                 android:layout_height="50dp">
 
@@ -172,13 +185,16 @@
                     android:src="@drawable/next_xia" />
 
                 <TextView
+                    android:id="@+id/wangguan_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="12dp"
                     android:layout_toLeftOf="@+id/next04"
-                    android:text="未填写"
-                    android:textColor="#cccccc"
+                    android:gravity="right"
+                    android:hint="未填写"
+                    android:textColor="#333333"
+                    android:textColorHint="#cccccc"
                     android:textSize="12dp" />
 
 
@@ -192,6 +208,7 @@
 
 
             <RelativeLayout
+                android:id="@+id/wangguan_bianma_layout"
                 android:layout_width="match_parent"
                 android:layout_height="50dp">
 
@@ -215,13 +232,16 @@
                     android:src="@drawable/next_xia" />
 
                 <TextView
+                    android:id="@+id/wangguan_bianma"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="12dp"
                     android:layout_toLeftOf="@+id/next05"
-                    android:text="未填写"
-                    android:textColor="#cccccc"
+                    android:gravity="right"
+                    android:hint="未填写"
+                    android:textColor="#333333"
+                    android:textColorHint="#cccccc"
                     android:textSize="12dp" />
 
 
@@ -235,6 +255,7 @@
 
 
             <RelativeLayout
+                android:id="@+id/address_layout"
                 android:layout_width="match_parent"
                 android:layout_height="50dp">
 
@@ -258,13 +279,16 @@
                     android:src="@drawable/next_xia" />
 
                 <TextView
+                    android:id="@+id/address"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="12dp"
                     android:layout_toLeftOf="@+id/next06"
-                    android:text="选填"
-                    android:textColor="#cccccc"
+                    android:gravity="right"
+                    android:hint="选填"
+                    android:textColor="#333333"
+                    android:textColorHint="#cccccc"
                     android:textSize="12dp" />
 
 
@@ -278,6 +302,7 @@
 
 
             <RelativeLayout
+                android:id="@+id/beizhu_layout"
                 android:layout_width="match_parent"
                 android:layout_height="50dp">
 
@@ -301,13 +326,16 @@
                     android:src="@drawable/next_xia" />
 
                 <TextView
+                    android:id="@+id/beizhu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="12dp"
                     android:layout_toLeftOf="@+id/next07"
-                    android:text="选填"
-                    android:textColor="#cccccc"
+                    android:gravity="right"
+                    android:hint="选填"
+                    android:textColor="#333333"
+                    android:textColorHint="#cccccc"
                     android:textSize="12dp" />
 
 
@@ -319,8 +347,54 @@
                 android:layout_height="1dp"
                 android:background="#f1f1f1" />
 
+            <RelativeLayout
+                android:id="@+id/dapeng_name_layout"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="23dp"
+                    android:text="大棚名称"
+                    android:textColor="#333333"
+                    android:textSize="15dp" />
+
+
+                <ImageView
+                    android:id="@+id/image"
+                    android:layout_width="9dp"
+                    android:layout_height="17dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="13dp"
+                    android:src="@drawable/next_xia" />
+
+                <TextView
+                    android:id="@+id/dapeng_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="12dp"
+                    android:layout_toLeftOf="@+id/image"
+                    android:gravity="right"
+                    android:hint="未填写"
+                    android:textColor="#333333"
+                    android:textColorHint="#cccccc"
+                    android:textSize="12dp" />
+
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#f1f1f1" />
+
 
             <RelativeLayout
+                android:id="@+id/device_type_layout"
                 android:layout_width="match_parent"
                 android:layout_height="50dp">
 
@@ -344,13 +418,16 @@
                     android:src="@drawable/next_xia" />
 
                 <TextView
+                    android:id="@+id/device_type"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="12dp"
                     android:layout_toLeftOf="@+id/next08"
-                    android:text="未填写"
-                    android:textColor="#cccccc"
+                    android:gravity="right"
+                    android:hint="未填写"
+                    android:textColor="#333333"
+                    android:textColorHint="#cccccc"
                     android:textSize="12dp" />
 
 
@@ -364,6 +441,7 @@
 
 
             <RelativeLayout
+                android:id="@+id/yujing_layout"
                 android:layout_width="match_parent"
                 android:layout_height="50dp">
 
@@ -387,13 +465,16 @@
                     android:src="@drawable/next_xia" />
 
                 <TextView
+                    android:id="@+id/yujing"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="12dp"
                     android:layout_toLeftOf="@+id/next09"
-                    android:text="未填写"
-                    android:textColor="#cccccc"
+                    android:gravity="right"
+                    android:hint="未填写"
+                    android:textColor="#333333"
+                    android:textColorHint="#cccccc"
                     android:textSize="12dp" />
 
 
@@ -407,6 +488,7 @@
 
 
             <RelativeLayout
+                android:id="@+id/gaojing_layout"
                 android:layout_width="match_parent"
                 android:layout_height="50dp">
 
@@ -430,13 +512,16 @@
                     android:src="@drawable/next_xia" />
 
                 <TextView
+                    android:id="@+id/gaojing"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="12dp"
                     android:layout_toLeftOf="@+id/next10"
-                    android:text="未填写"
-                    android:textColor="#cccccc"
+                    android:gravity="right"
+                    android:hint="未填写"
+                    android:textColor="#333333"
+                    android:textColorHint="#cccccc"
                     android:textSize="12dp" />
 
 
@@ -450,6 +535,7 @@
 
 
             <RelativeLayout
+                android:id="@+id/yuejie_layout"
                 android:layout_width="match_parent"
                 android:layout_height="50dp">
 
@@ -473,13 +559,16 @@
                     android:src="@drawable/next_xia" />
 
                 <TextView
+                    android:id="@+id/yuejie"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="12dp"
                     android:layout_toLeftOf="@+id/next11"
-                    android:text="可选"
-                    android:textColor="#cccccc"
+                    android:gravity="right"
+                    android:hint="可选"
+                    android:textColor="#333333"
+                    android:textColorHint="#cccccc"
                     android:textSize="12dp" />
 
 
@@ -492,10 +581,12 @@
                 android:background="#f1f1f1" />
 
             <RelativeLayout
+                android:id="@+id/jierufangshi_layout"
                 android:layout_width="match_parent"
                 android:layout_height="50dp">
 
                 <TextView
+                    android:id="@+id/textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -515,13 +606,17 @@
                     android:src="@drawable/next_xia" />
 
                 <TextView
+                    android:id="@+id/jierufangshi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
+                    android:layout_alignTop="@+id/textView"
+                    android:layout_marginEnd="12dp"
                     android:layout_marginRight="12dp"
-                    android:layout_toLeftOf="@+id/next12"
-                    android:text="未选择"
-                    android:textColor="#cccccc"
+                    android:layout_toStartOf="@+id/next12"
+                    android:gravity="right"
+                    android:hint="未选择"
+                    android:textColor="#333333"
+                    android:textColorHint="#cccccc"
                     android:textSize="12dp" />
 
 
@@ -535,6 +630,7 @@
 
 
             <RelativeLayout
+                android:id="@+id/pingpai_layout"
                 android:layout_width="match_parent"
                 android:layout_height="50dp">
 
@@ -558,13 +654,16 @@
                     android:src="@drawable/next_xia" />
 
                 <TextView
+                    android:id="@+id/pingpai"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="12dp"
                     android:layout_toLeftOf="@+id/next13"
-                    android:text="未填写"
-                    android:textColor="#cccccc"
+                    android:gravity="right"
+                    android:hint="未填写"
+                    android:textColor="#333333"
+                    android:textColorHint="#cccccc"
                     android:textSize="12dp" />
 
 
@@ -578,6 +677,7 @@
 
 
             <RelativeLayout
+                android:id="@+id/xinghao_layout"
                 android:layout_width="match_parent"
                 android:layout_height="50dp">
 
@@ -601,13 +701,16 @@
                     android:src="@drawable/next_xia" />
 
                 <TextView
+                    android:id="@+id/xinghao"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="12dp"
                     android:layout_toLeftOf="@+id/next14"
-                    android:text="未填写"
-                    android:textColor="#cccccc"
+                    android:gravity="right"
+                    android:hint="未填写"
+                    android:textColor="#333333"
+                    android:textColorHint="#cccccc"
                     android:textSize="12dp" />
 
 
@@ -621,6 +724,7 @@
 
 
             <RelativeLayout
+                android:id="@+id/gujian_versition_layout"
                 android:layout_width="match_parent"
                 android:layout_height="50dp">
 
@@ -644,13 +748,16 @@
                     android:src="@drawable/next_xia" />
 
                 <TextView
+                    android:id="@+id/gujian_version"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="12dp"
                     android:layout_toLeftOf="@+id/next15"
-                    android:text="未填写"
-                    android:textColor="#cccccc"
+                    android:gravity="right"
+                    android:hint="未填写"
+                    android:textColor="#333333"
+                    android:textColorHint="#cccccc"
                     android:textSize="12dp" />
 
 
@@ -663,6 +770,7 @@
                 android:background="#f1f1f1" />
 
             <RelativeLayout
+                android:id="@+id/zhibo_address_layout"
                 android:layout_width="match_parent"
                 android:layout_height="50dp">
 
@@ -698,13 +806,16 @@
                     android:src="@drawable/next_xia" />
 
                 <TextView
+                    android:id="@+id/zhibo_address"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="12dp"
                     android:layout_toLeftOf="@+id/next16"
-                    android:text="未填写"
-                    android:textColor="#cccccc"
+                    android:gravity="right"
+                    android:hint="未填写"
+                    android:textColor="#333333"
+                    android:textColorHint="#cccccc"
                     android:textSize="12dp" />
 
 
@@ -718,6 +829,7 @@
 
 
             <RelativeLayout
+                android:id="@+id/wifi_id_layout"
                 android:layout_width="match_parent"
                 android:layout_height="50dp">
 
@@ -741,13 +853,16 @@
                     android:src="@drawable/next_xia" />
 
                 <TextView
+                    android:id="@+id/wifi_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="12dp"
                     android:layout_toLeftOf="@+id/next17"
-                    android:text="未填写"
-                    android:textColor="#cccccc"
+                    android:gravity="right"
+                    android:hint="未填写"
+                    android:textColor="#333333"
+                    android:textColorHint="#cccccc"
                     android:textSize="12dp" />
 
 
@@ -761,6 +876,7 @@
 
 
             <RelativeLayout
+                android:id="@+id/zuzhi_layout"
                 android:layout_width="match_parent"
                 android:layout_height="50dp">
 
@@ -784,13 +900,16 @@
                     android:src="@drawable/next_xia" />
 
                 <TextView
+                    android:id="@+id/zuzhi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="12dp"
                     android:layout_toLeftOf="@+id/next18"
-                    android:text="未填写"
-                    android:textColor="#cccccc"
+                    android:gravity="right"
+                    android:hint="未填写"
+                    android:textColor="#333333"
+                    android:textColorHint="#cccccc"
                     android:textSize="12dp" />
 
 
@@ -804,6 +923,7 @@
 
 
             <RelativeLayout
+                android:id="@+id/quyu_layout"
                 android:layout_width="match_parent"
                 android:layout_height="50dp">
 
@@ -827,13 +947,16 @@
                     android:src="@drawable/next_xia" />
 
                 <TextView
+                    android:id="@+id/quyu_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="12dp"
                     android:layout_toLeftOf="@+id/next19"
-                    android:text="未填写"
-                    android:textColor="#cccccc"
+                    android:gravity="right"
+                    android:hint="未填写"
+                    android:textColor="#333333"
+                    android:textColorHint="#cccccc"
                     android:textSize="12dp" />
 
 
@@ -847,6 +970,7 @@
 
 
             <RelativeLayout
+                android:id="@+id/wangdian_layout"
                 android:layout_width="match_parent"
                 android:layout_height="50dp">
 
@@ -870,13 +994,16 @@
                     android:src="@drawable/next_xia" />
 
                 <TextView
+                    android:id="@+id/wangdian"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="12dp"
                     android:layout_toLeftOf="@+id/next20"
-                    android:text="未填写"
-                    android:textColor="#cccccc"
+                    android:gravity="right"
+                    android:hint="未填写"
+                    android:textColor="#333333"
+                    android:textColorHint="#cccccc"
                     android:textSize="12dp" />
 
 
@@ -892,6 +1019,4 @@
 
 
     </ScrollView>
-
-
 </LinearLayout>

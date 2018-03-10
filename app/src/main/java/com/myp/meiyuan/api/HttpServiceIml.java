@@ -10,6 +10,7 @@ import com.myp.meiyuan.entity.GroupBO;
 import com.myp.meiyuan.entity.OperationRecoderBo;
 import com.myp.meiyuan.entity.ResultBo;
 import com.myp.meiyuan.entity.UserBo;
+import com.myp.meiyuan.entity.VideoBo;
 import com.myp.meiyuan.entity.WaitRecoderBo;
 import com.myp.meiyuan.util.MD5;
 import com.myp.meiyuan.util.StringUtils;
@@ -305,6 +306,29 @@ public class HttpServiceIml {
             object.put("username", MyApplication.sp.getString(LocalConfiguration.userName));
             object.put("photo", photo);
             return getService().updateUserImg(object.toString()).compose(RxResultHelper.<ResultBo>httpResult01());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * 添加设备
+     */
+    public static Observable<ResultBo> addDevice(JSONObject object) {
+        return getService().addDevices(object.toString()).compose(RxResultHelper.<ResultBo>httpResult01());
+    }
+
+
+    /**
+     * 获取视频列表
+     */
+    public static Observable<List<VideoBo>> getVideoList(String groupId) {
+        JSONObject object = new JSONObject();
+        try {
+            object.put("username", MyApplication.sp.getString(LocalConfiguration.userName));
+            object.put("groupId", groupId);
+            return getService().getVideoList(object.toString()).compose(RxResultHelper.<List<VideoBo>>httpResult01());
         } catch (Exception e) {
             e.printStackTrace();
         }

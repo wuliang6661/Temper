@@ -4,4 +4,6 @@
     <string name="rv_loading">正在加载...</string>
     <string name="rv_loading_complete">已加载全部内容</string>
     <string name="jianceshebei">检测设备</string>
+
+    <string name="rule_password">0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ`¬!"£$%^*()~=#{}[];':,./?/*-_+&#060;&#062;&#064;&#038;</string>
 </resources>

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.InputType;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -15,6 +16,7 @@ import com.myp.meiyuan.entity.GroupBO;
 import com.myp.meiyuan.mvp.MVPBaseActivity;
 import com.myp.meiyuan.util.LogUtils;
 import com.myp.meiyuan.util.StringUtils;
+import com.myp.meiyuan.widget.LimitInputTextWatcher;
 
 import butterknife.Bind;
 
@@ -33,6 +35,8 @@ public class UpdateActivity extends MVPBaseActivity<UpdateContract.View, UpdateP
     GroupBO groupBO;
 
     boolean isUserMessage = false;
+    boolean isNum = false;
+    boolean isCode = false;
     private InputMethodManager imm;
 
     @Override
@@ -51,6 +55,15 @@ public class UpdateActivity extends MVPBaseActivity<UpdateContract.View, UpdateP
 
         imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         isUserMessage = getIntent().getBooleanExtra("isUserMessage", false);
+        isNum = getIntent().getBooleanExtra("isNum", false);
+        isCode = getIntent().getBooleanExtra("isCode", false);
+        if (isNum) {
+            editDapeng.setInputType(InputType.TYPE_CLASS_NUMBER);
+            editDapeng.setMaxWidth(11);
+        }
+        if (isCode) {
+            editDapeng.addTextChangedListener(new LimitInputTextWatcher(editDapeng));
+        }
         if (isUserMessage) {
             editDapeng.setHint("请输入信息");
         } else {

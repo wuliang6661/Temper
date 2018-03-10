@@ -7,6 +7,7 @@ import com.google.gson.reflect.TypeToken;
 import com.myp.meiyuan.api.HttpServiceIml;
 import com.myp.meiyuan.entity.DeviceBO;
 import com.myp.meiyuan.entity.GroupBO;
+import com.myp.meiyuan.entity.VideoBo;
 import com.myp.meiyuan.mvp.BasePresenterImpl;
 
 import java.util.ArrayList;
@@ -37,7 +38,7 @@ public class HomePresenter extends BasePresenterImpl<HomeContract.View> implemen
             @Override
             public void onNext(List<DeviceBO> s) {
                 if (mView != null) {
-                    mView.getDeviceList(s,groupId);
+                    mView.getDeviceList(s, groupId);
                 }
             }
         });
@@ -58,10 +59,33 @@ public class HomePresenter extends BasePresenterImpl<HomeContract.View> implemen
 
             @Override
             public void onNext(List<GroupBO> groupBOs) {
-                if(mView != null){
+                if (mView != null) {
                     mView.getTab(groupBOs);
                 }
 
-            }});
+            }
+        });
+    }
+
+    @Override
+    public void getVideoNum(String groupId) {
+        HttpServiceIml.getVideoList(groupId).subscribe(new Subscriber<List<VideoBo>>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(List<VideoBo> s) {
+                if (mView != null) {
+                    mView.getVideoNum(s.size());
+                }
+            }
+        });
     }
 }

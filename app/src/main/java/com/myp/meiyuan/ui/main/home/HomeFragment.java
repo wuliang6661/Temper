@@ -21,10 +21,14 @@ import com.myp.meiyuan.entity.GroupBO;
 import com.myp.meiyuan.mvp.MVPBaseFragment;
 import com.myp.meiyuan.ui.deviceadd.DeviceAddActivity;
 import com.myp.meiyuan.ui.monitormessage.MonitorMessageActivity;
+import com.myp.meiyuan.ui.videolist.VideoListActivity;
+import com.myp.meiyuan.util.TemperImgUtils;
+import com.myp.meiyuan.util.TimeUtils;
 import com.myp.meiyuan.widget.lgrecycleadapter.LGRecycleViewAdapter;
 import com.myp.meiyuan.widget.lgrecycleadapter.LGViewHolder;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.Bind;
@@ -52,8 +56,10 @@ public class HomeFragment extends MVPBaseFragment<HomeContract.View, HomePresent
     LGRecycleViewAdapter<DeviceBO> adapter;
 
     List<GroupBO> jianceGroups;
+    String groupId;
 
     int position;
+    int size;
 
 
     @Nullable
@@ -85,6 +91,8 @@ public class HomeFragment extends MVPBaseFragment<HomeContract.View, HomePresent
                 recycle.setVisibility(View.GONE);
                 showProgress("加载中...");
                 mPresenter.getDeviceList(jianceGroups.get(tab.getPosition()).getGroupId() + "");
+                mPresenter.getVideoNum(jianceGroups.get(tab.getPosition()).getGroupId() + "");
+                groupId = jianceGroups.get(tab.getPosition()).getGroupId() + "";
             }
 
             @Override
@@ -116,13 +124,21 @@ public class HomeFragment extends MVPBaseFragment<HomeContract.View, HomePresent
 
             @Override
             public void convert(LGViewHolder holder, DeviceBO s, int position) {
-                holder.setText(R.id.device_id, "ID:" + s.getDeviceId());
-                holder.setText(R.id.device_name, s.getDeviceName());
-                holder.setText(R.id.device_time, s.getLastTime());
+                TextView value = (TextView) holder.getView(R.id.value);
+                if (size != 0 && position == list.size() - 1) {
+                    holder.setText(R.id.device_id, "ID:100002");
+                    holder.setText(R.id.device_name, "视频");
+                    holder.setText(R.id.device_time, TimeUtils.date2String(new Date()));
+                    value.setText(size + "");
+                } else {
+                    holder.setText(R.id.device_id, "ID:" + s.getDeviceId());
+                    holder.setText(R.id.device_name, s.getDeviceName());
+                    holder.setText(R.id.device_time, s.getLastTime());
+                    value.setText(s.getValue());
+                }
                 TextView type = (TextView) holder.getView(R.id.connect_type_text);
                 ImageView point = (ImageView) holder.getView(R.id.connect_type_point);
                 ImageView deviceImg = (ImageView) holder.getView(R.id.device_img);
-                TextView value = (TextView) holder.getView(R.id.value);
                 TextView valueType = (TextView) holder.getView(R.id.value_type);
                 if (s.getEstate().equals("在线")) {
                     type.setText("在线");
@@ -135,31 +151,19 @@ public class HomeFragment extends MVPBaseFragment<HomeContract.View, HomePresent
                     value.setTextColor(Color.parseColor("#999999"));
                     point.setImageResource(R.drawable.hui_point);
                 }
-                value.setText(s.getValue());
+                deviceImg.setImageResource(TemperImgUtils.getResImg(s.getDeviceTypeId(), s.getEstate()));
                 switch (s.getDeviceTypeId()) {
                     case 1:
-                        if (s.getEstate().equals("在线")) {
-                            deviceImg.setImageResource(R.drawable.wendu);
-                        } else {
-                            deviceImg.setImageResource(R.drawable.wendu_dis);
-                        }
                         valueType.setText("℃");
                         break;
                     case 2:
-                        if (s.getEstate().equals("在线")) {
-                            deviceImg.setImageResource(R.drawable.shidu);
-                        } else {
-                            deviceImg.setImageResource(R.drawable.shudu_dis);
-                        }
                         valueType.setText("RH");
                         break;
                     case 4:
-                        if (s.getEstate().equals("在线")) {
-                            deviceImg.setImageResource(R.drawable.guangzhao);
-                        } else {
-                            deviceImg.setImageResource(R.drawable.guangzhao_dis);
-                        }
                         valueType.setText("Lx");
+                        break;
+                    case 5:
+                        valueType.setText("个");
                         break;
                 }
             }
@@ -167,9 +171,15 @@ public class HomeFragment extends MVPBaseFragment<HomeContract.View, HomePresent
         adapter.setOnItemClickListener(R.id.item_layout, new LGRecycleViewAdapter.ItemClickListener() {
             @Override
             public void onItemClicked(View view, int position) {
-                Intent intent = new Intent(getActivity(), MonitorMessageActivity.class);
-                intent.putExtra("deviceBo", list.get(position));
-                startActivity(intent);
+                if (list.get(position).getDeviceId() == 0) {
+                    Intent intent = new Intent(getActivity(), VideoListActivity.class);
+                    intent.putExtra("groupId", groupId);
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(getActivity(), MonitorMessageActivity.class);
+                    intent.putExtra("deviceBo", list.get(position));
+                    startActivity(intent);
+                }
             }
         });
         recycle.setAdapter(adapter);
@@ -210,6 +220,12 @@ public class HomeFragment extends MVPBaseFragment<HomeContract.View, HomePresent
         stopProgress();
         recycle.setVisibility(View.VISIBLE);
         if (jianceGroups.get(position).getGroupId() == Integer.parseInt(groupId)) {
+            if (size != 0) {
+                DeviceBO deviceBO = new DeviceBO();
+                deviceBO.setDeviceTypeId(5);
+                deviceBO.setEstate("在线");
+                deviceBOs.add(deviceBO);
+            }
             setAdapter(deviceBOs);
         }
     }
@@ -224,5 +240,12 @@ public class HomeFragment extends MVPBaseFragment<HomeContract.View, HomePresent
             }
         }
         mPresenter.getDeviceList(jianceGroups.get(0).getGroupId() + "");
+        mPresenter.getVideoNum(jianceGroups.get(0).getGroupId() + "");
+        groupId = jianceGroups.get(0).getGroupId() + "";
+    }
+
+    @Override
+    public void getVideoNum(int size) {
+        this.size = size;
     }
 }

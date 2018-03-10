@@ -15,9 +15,11 @@ import java.util.List;
 public class HomeContract {
     interface View extends BaseView {
 
-        void getDeviceList(List<DeviceBO> deviceBOs,String groupId);
+        void getDeviceList(List<DeviceBO> deviceBOs, String groupId);
 
         void getTab(List<GroupBO> groupBOs);
+
+        void getVideoNum(int size);
 
     }
 
@@ -28,6 +30,9 @@ public class HomeContract {
 
 
         void getTab();
+
+
+        void getVideoNum(String groupId);
 
     }
 }

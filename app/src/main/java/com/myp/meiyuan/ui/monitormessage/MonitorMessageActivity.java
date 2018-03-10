@@ -16,6 +16,7 @@ import com.myp.meiyuan.mvp.MVPBaseActivity;
 import com.myp.meiyuan.ui.FragmentPaerAdapter;
 import com.myp.meiyuan.ui.monitormessage.chart.ChartFragment;
 import com.myp.meiyuan.ui.monitormessage.message.MessageFragment;
+import com.myp.meiyuan.util.TemperImgUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -100,37 +101,17 @@ public class MonitorMessageActivity extends MVPBaseActivity<MonitorMessageContra
             connectTypePoint.setImageResource(R.drawable.hui_point);
         }
         value.setText(s.getValue());
+        deviceImg.setImageResource(TemperImgUtils.getResImg(s.getDeviceTypeId(),s.getEstate()));
         switch (s.getDeviceTypeId()) {
             case 1:
-                if (s.getEstate().equals("在线")) {
-                    deviceImg.setImageResource(R.drawable.wendu);
-
-                } else {
-                    deviceImg.setImageResource(R.drawable.wendu_dis);
-                }
                 valueType.setText("℃");
-//                valueDanwei.setText("数据(℃)");
                 break;
             case 2:
-                if (s.getEstate().equals("在线")) {
-                    deviceImg.setImageResource(R.drawable.shidu);
-                } else {
-                    deviceImg.setImageResource(R.drawable.shudu_dis);
-                }
                 valueType.setText("RH");
-//                valueDanwei.setText("数据(RH)");
                 break;
             case 4:
-                if (s.getEstate().equals("在线")) {
-                    deviceImg.setImageResource(R.drawable.guangzhao);
-                } else {
-                    deviceImg.setImageResource(R.drawable.guangzhao_dis);
-                }
                 valueType.setText("Lx");
-//                valueDanwei.setText("数据(Lx)");
                 break;
         }
     }
-
-
 }

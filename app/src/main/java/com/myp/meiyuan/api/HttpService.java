@@ -5,10 +5,10 @@ import com.myp.meiyuan.entity.DeviceAndGroupBo;
 import com.myp.meiyuan.entity.DeviceBO;
 import com.myp.meiyuan.entity.FamenBo;
 import com.myp.meiyuan.entity.GroupBO;
-import com.myp.meiyuan.entity.MonitorBo;
 import com.myp.meiyuan.entity.OperationRecoderBo;
 import com.myp.meiyuan.entity.ResultBo;
 import com.myp.meiyuan.entity.UserBo;
+import com.myp.meiyuan.entity.VideoBo;
 import com.myp.meiyuan.entity.WaitRecoderBo;
 
 import java.util.List;
@@ -126,6 +126,18 @@ public interface HttpService {
      */
     @GET("/xiaokedou1/user/login")
     Observable<String> userLogin(@Query("params") String params);
+
+    /**
+     * 添加设备
+     */
+    @GET("/xiaokedou1/equipment/addNumericDevices")
+    Observable<ResultBo> addDevices(@Query("params") String params);
+
+    /**
+     * 获取视频列表
+     */
+    @GET("/xiaokedou1/equipment/getAllVideoDevicesByGroupId")
+    Observable<List<VideoBo>> getVideoList(@Query("params") String params);
 
 
 }
