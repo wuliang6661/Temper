@@ -102,16 +102,6 @@ public class MonitorMessageActivity extends MVPBaseActivity<MonitorMessageContra
         }
         value.setText(s.getValue());
         deviceImg.setImageResource(TemperImgUtils.getResImg(s.getDeviceTypeId(),s.getEstate()));
-        switch (s.getDeviceTypeId()) {
-            case 1:
-                valueType.setText("℃");
-                break;
-            case 2:
-                valueType.setText("RH");
-                break;
-            case 4:
-                valueType.setText("Lx");
-                break;
-        }
+        valueType.setText(TemperImgUtils.getTextType(s.getDeviceTypeId()));
     }
 }

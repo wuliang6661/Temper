@@ -91,6 +91,7 @@ public class HomeFragment extends MVPBaseFragment<HomeContract.View, HomePresent
                 recycle.setVisibility(View.GONE);
                 showProgress("加载中...");
                 mPresenter.getDeviceList(jianceGroups.get(tab.getPosition()).getGroupId() + "");
+                size = 0;
                 mPresenter.getVideoNum(jianceGroups.get(tab.getPosition()).getGroupId() + "");
                 groupId = jianceGroups.get(tab.getPosition()).getGroupId() + "";
             }
@@ -152,20 +153,7 @@ public class HomeFragment extends MVPBaseFragment<HomeContract.View, HomePresent
                     point.setImageResource(R.drawable.hui_point);
                 }
                 deviceImg.setImageResource(TemperImgUtils.getResImg(s.getDeviceTypeId(), s.getEstate()));
-                switch (s.getDeviceTypeId()) {
-                    case 1:
-                        valueType.setText("℃");
-                        break;
-                    case 2:
-                        valueType.setText("RH");
-                        break;
-                    case 4:
-                        valueType.setText("Lx");
-                        break;
-                    case 5:
-                        valueType.setText("个");
-                        break;
-                }
+                valueType.setText(TemperImgUtils.getTextType(s.getDeviceTypeId()));
             }
         };
         adapter.setOnItemClickListener(R.id.item_layout, new LGRecycleViewAdapter.ItemClickListener() {
