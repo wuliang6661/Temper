@@ -16,19 +16,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.myp.meiyuan.R;
+import com.myp.meiyuan.config.LocalConfiguration;
 import com.myp.meiyuan.entity.DeviceBO;
 import com.myp.meiyuan.entity.GroupBO;
 import com.myp.meiyuan.mvp.MVPBaseFragment;
 import com.myp.meiyuan.ui.deviceadd.DeviceAddActivity;
 import com.myp.meiyuan.ui.monitormessage.MonitorMessageActivity;
 import com.myp.meiyuan.ui.videolist.VideoListActivity;
+import com.myp.meiyuan.util.LogUtils;
 import com.myp.meiyuan.util.TemperImgUtils;
-import com.myp.meiyuan.util.TimeUtils;
 import com.myp.meiyuan.widget.lgrecycleadapter.LGRecycleViewAdapter;
 import com.myp.meiyuan.widget.lgrecycleadapter.LGViewHolder;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import butterknife.Bind;
@@ -57,9 +57,9 @@ public class HomeFragment extends MVPBaseFragment<HomeContract.View, HomePresent
 
     List<GroupBO> jianceGroups;
     String groupId;
+    List<DeviceBO> deviceBOs;
 
     int position;
-    int size;
 
 
     @Nullable
@@ -91,9 +91,8 @@ public class HomeFragment extends MVPBaseFragment<HomeContract.View, HomePresent
                 recycle.setVisibility(View.GONE);
                 showProgress("加载中...");
                 mPresenter.getDeviceList(jianceGroups.get(tab.getPosition()).getGroupId() + "");
-                size = 0;
-                mPresenter.getVideoNum(jianceGroups.get(tab.getPosition()).getGroupId() + "");
                 groupId = jianceGroups.get(tab.getPosition()).getGroupId() + "";
+                LogUtils.E("进来了！");
             }
 
             @Override
@@ -112,12 +111,12 @@ public class HomeFragment extends MVPBaseFragment<HomeContract.View, HomePresent
     /**
      * 设置数据
      */
-    private void setAdapter(final List<DeviceBO> list) {
+    private void setAdapter() {
         if (adapter != null) {
-            adapter.setDataList(list);
+            adapter.setDataList(deviceBOs);
             return;
         }
-        adapter = new LGRecycleViewAdapter<DeviceBO>(list) {
+        adapter = new LGRecycleViewAdapter<DeviceBO>(deviceBOs) {
             @Override
             public int getLayoutId(int viewType) {
                 return R.layout.item_home;
@@ -126,17 +125,10 @@ public class HomeFragment extends MVPBaseFragment<HomeContract.View, HomePresent
             @Override
             public void convert(LGViewHolder holder, DeviceBO s, int position) {
                 TextView value = (TextView) holder.getView(R.id.value);
-                if (size != 0 && position == list.size() - 1) {
-                    holder.setText(R.id.device_id, "ID:100002");
-                    holder.setText(R.id.device_name, "视频");
-                    holder.setText(R.id.device_time, TimeUtils.date2String(new Date()));
-                    value.setText(size + "");
-                } else {
-                    holder.setText(R.id.device_id, "ID:" + s.getDeviceId());
-                    holder.setText(R.id.device_name, s.getDeviceName());
-                    holder.setText(R.id.device_time, s.getLastTime());
-                    value.setText(s.getValue());
-                }
+                holder.setText(R.id.device_id, "ID:" + s.getDeviceId());
+                holder.setText(R.id.device_name, s.getDeviceName());
+                holder.setText(R.id.device_time, s.getLastTime());
+                value.setText(s.getValue());
                 TextView type = (TextView) holder.getView(R.id.connect_type_text);
                 ImageView point = (ImageView) holder.getView(R.id.connect_type_point);
                 ImageView deviceImg = (ImageView) holder.getView(R.id.device_img);
@@ -159,13 +151,13 @@ public class HomeFragment extends MVPBaseFragment<HomeContract.View, HomePresent
         adapter.setOnItemClickListener(R.id.item_layout, new LGRecycleViewAdapter.ItemClickListener() {
             @Override
             public void onItemClicked(View view, int position) {
-                if (list.get(position).getDeviceId() == 0) {
+                if (deviceBOs.get(position).getDeviceTypeId() == LocalConfiguration.DEVICE_TYPE_VIDEO) {
                     Intent intent = new Intent(getActivity(), VideoListActivity.class);
                     intent.putExtra("groupId", groupId);
                     startActivity(intent);
                 } else {
                     Intent intent = new Intent(getActivity(), MonitorMessageActivity.class);
-                    intent.putExtra("deviceBo", list.get(position));
+                    intent.putExtra("deviceBo", deviceBOs.get(position));
                     startActivity(intent);
                 }
             }
@@ -176,7 +168,7 @@ public class HomeFragment extends MVPBaseFragment<HomeContract.View, HomePresent
 
     @Override
     public void onDestroyView() {
-        handler.removeCallbacks(runnable);
+        handler.removeCallbacksAndMessages(null);
         super.onDestroyView();
         ButterKnife.unbind(this);
     }
@@ -208,13 +200,8 @@ public class HomeFragment extends MVPBaseFragment<HomeContract.View, HomePresent
         stopProgress();
         recycle.setVisibility(View.VISIBLE);
         if (jianceGroups.get(position).getGroupId() == Integer.parseInt(groupId)) {
-            if (size != 0) {
-                DeviceBO deviceBO = new DeviceBO();
-                deviceBO.setDeviceTypeId(5);
-                deviceBO.setEstate("在线");
-                deviceBOs.add(deviceBO);
-            }
-            setAdapter(deviceBOs);
+            this.deviceBOs = deviceBOs;
+            setAdapter();
         }
     }
 
@@ -227,13 +214,12 @@ public class HomeFragment extends MVPBaseFragment<HomeContract.View, HomePresent
                 tabLayout.addTab(tabLayout.newTab().setText(groupBO.getGroupName()));
             }
         }
-        mPresenter.getDeviceList(jianceGroups.get(0).getGroupId() + "");
-        mPresenter.getVideoNum(jianceGroups.get(0).getGroupId() + "");
-        groupId = jianceGroups.get(0).getGroupId() + "";
+//        mPresenter.getDeviceList(jianceGroups.get(0).getGroupId() + "");
+//        groupId = jianceGroups.get(0).getGroupId() + "";
     }
 
     @Override
     public void getVideoNum(int size) {
-        this.size = size;
+
     }
 }

@@ -72,7 +72,7 @@ public class VideoListActivity extends MVPBaseActivity<VideoListContract.View, V
     @Override
     protected void onResume() {
         super.onResume();
-        if (videoBos==null) {
+        if (videoBos == null) {
             mPresenter.getVideoNum(groupId);
         }
     }
@@ -132,6 +132,9 @@ public class VideoListActivity extends MVPBaseActivity<VideoListContract.View, V
     @Override
     public void getVideoList(List<VideoBo> videoBos) {
         this.videoBos = videoBos;
+        if (videoBos == null || videoBos.size() == 0) {
+            stopProgress();
+        }
         setAdapter(videoBos);
     }
 
